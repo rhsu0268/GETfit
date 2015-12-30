@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-//var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 //var Exercise = mongoose.model('Exercise');
-//var Goal = mongoose.model('Goal');
+var Goal = mongoose.model('Goal');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
