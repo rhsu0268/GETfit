@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-//var Exercise = mongoose.model('Exercise');
+var Exercise = mongoose.model('Exercise');
 var Goal = mongoose.model('Goal');
 
 /* GET home page. */
@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/*('/exercises', function(req, res, next) {
+// route to get all the exercises
+router.get('/exercises', function(req, res, next) {
     Exercise.find(function(err, exercises) {
 
         if (err)
@@ -22,8 +23,8 @@ router.get('/', function(req, res, next) {
 
     });
 });
-*/
-/*
+
+
 router.post('/exercises', function(req, res, next) {
 
     var exercise = new Exercise(req.body);
@@ -37,5 +38,5 @@ router.post('/exercises', function(req, res, next) {
     });
 
 });
-*/
+
 module.exports = router;
