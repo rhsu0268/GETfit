@@ -56,14 +56,14 @@ app.controller('MainCtrl', ['$scope', 'exercises', function($scope, exercises) {
             return;
         }
 
-        if (!$scope.set || $scope.set === '')
+        if (!$scope.group || $scope.group === '')
         {
             return;
         }
         $scope.workoutPlan.push({
             title: $scope.title,
-            set: $scope.set,
-            information: [
+            group: $scope.group,
+            goal: [
                 {rep: 8, set: 2}
             ]
 
@@ -83,7 +83,7 @@ app.controller('ExercisesCtrl', ['$scope', '$stateParams', 'exercises', function
 
     $scope.addFitnessGoal = function()
     {
-        $scope.exercise.information.push({
+        $scope.exercise.goal.push({
             rep: $scope.rep,
             set: $scope.set
         });

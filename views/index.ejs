@@ -60,7 +60,7 @@
                 <h1>Welcome to GETfit</h1>
             </div>
             <div ng-repeat="exercise in workoutPlan | orderBy: '+set'">
-                {{exercise.title}} - set: {{exercise.set}}
+                {{exercise.title}} - Group: {{exercise.group}}
                 <span>
                     <a href="#/exercises/{{$index}}">Information</a>
                 </span>
@@ -78,8 +78,8 @@
                 <div class="form-group">
                     <input type="number"
                        class="form-control"
-                       placeholder="Set"
-                       ng-model="set">
+                       placeholder="Group"
+                       ng-model="group">
                     </input>
                 </div>
                 <button type="submit" class="btn btn-primary">Add Exercise</button>
@@ -91,7 +91,7 @@
                     {{exercise.title}}
                 </h3>
             </div>
-            <div ng-repeat="info in exercise.information">
+            <div ng-repeat="info in exercise.goal">
                 Rep: {{info.rep}} Set: {{info.set}}
             </div>
 
