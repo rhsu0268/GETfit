@@ -10,6 +10,40 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/myFitness', function(req, res, next) {
+  res.render('myFitness', { title: 'Express' });
+});
+
+
+
+router.param('exercise', function(req, res, next, id) {
+
+    var query = Exercise.findById(id);
+
+    query.exec(function(err, post) {
+        if (err)
+        {
+            return next(err);
+        }
+        id (!exercise)
+        {
+            return next(new Error('can\'t find exercise'));
+        }
+
+        req.exercise = exercise;
+        return next();
+
+
+    });
+
+});
+
+
+router.get('/exercises/:exercise', function(req, res) {
+    res.json(req.exercise);
+
+});
+
 // route to get all the exercises
 router.get('/exercises', function(req, res, next) {
     Exercise.find(function(err, exercises) {

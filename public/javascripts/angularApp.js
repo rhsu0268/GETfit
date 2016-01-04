@@ -9,7 +9,14 @@ app.config([
             .state('home', {
                 url: '/home',
                 templateUrl: '/home.html',
-                controller: 'MainCtrl'
+                controller: 'MainCtrl',
+                resolve: {
+                    postPromise: ['exercises', function(exercises) {
+
+                        return exercises.getAll();
+                    }]
+
+                }
             })
 
             .state('exercises', {
@@ -24,10 +31,27 @@ app.config([
     }
 
 ]);
-app.factory('exercises', [function() {
+app.factory('exercises', ['$http', function($http) {
 
     var activities = {
         exercises: []
+    };
+
+    activities.getAll = function()
+    {
+        return $http.get('/exercises').success(function(data) {
+            //console.log(data);
+            angular.copy(data, activities.exercises);
+            console.log(activities.exercies);
+        });
+    };
+
+    activities.create = function(exercise)
+    {
+        return $http.exercise('/exercises', exercise).success(function(data) {
+
+            activities.exercises.push(data);
+        });
     };
     return activities;
 
@@ -60,12 +84,21 @@ app.controller('MainCtrl', ['$scope', 'exercises', function($scope, exercises) {
         {
             return;
         }
+        /*
         $scope.workoutPlan.push({
             title: $scope.title,
             group: $scope.group,
             goal: [
                 {rep: 8, set: 2}
             ]
+
+        });
+        */
+
+        exercises.create({
+            title: $scope.title,
+            goal: $scope.group
+
 
         });
 
