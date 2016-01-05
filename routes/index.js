@@ -14,7 +14,18 @@ router.get('/myFitness', function(req, res, next) {
   res.render('myFitness', { title: 'Express' });
 });
 
+router.get('/planWorkout', function(req, res, next) {
+  res.render('planWorkout', { title: 'Express' });
+});
 
+router.get('/recommendWorkout', function(req, res, next) {
+  res.render('recommendWorkout', { title: 'Express' });
+});
+
+
+router.get('/workoutSummary', function(req, res, next) {
+  res.render('workoutSummary', { title: 'Express' });
+});
 
 router.param('exercise', function(req, res, next, id) {
 
