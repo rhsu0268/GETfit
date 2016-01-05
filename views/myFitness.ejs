@@ -32,8 +32,75 @@
         </div>
         <script type="text/ng-template" id="/myFitness.html">
             <div class="page-header">
-                <h1>myFitness Goals</h1>
+                <h1>myFitness Background</h1>
             </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h4>Name: Richard Hsu</h4>
+                <h4>Age: 23</h4>
+                <h4>Height: 5 ft 10 ins.</h4>
+                <h4>Weight: 140 lbs.</h4>
+                <h4>BMI:</h4>
+                <h4>Fitness Goal: General Fitness</h4>
+              </div>
+            </div>
+            <form ng-submit="updateProfile()">
+                <h3>Update myFitness Background</h3>
+                <div class="form-group">
+                    <input type="text"
+                       class="form-control"
+                       placeholder="Name"
+                       ng-model="name">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <input type="number"
+                       class="form-control"
+                       placeholder="Age"
+                       ng-model="age">
+                    </input>
+                </div>
+                <div style="float:left; ">
+                    <select class="form-control">
+                        <option value="1">1 ft</option>
+                        <option value="2">2 ft</option>
+                        <option value="3">3 ft</option>
+                        <option value="4">4 ft</option>
+                        <option value="5">5 ft</option>
+                        <option value="6">6 ft</option>
+                        <option value="7">7 ft</option>
+                        <option value="8">8 ft</option>
+                        <option value="9">9 ft</option>
+                        <option value="10">10 ft</option>
+                    </select>
+                </div>
+                <div style="float:right; ">
+                    <select class="form-control">
+                        <option value="1">1 in</option>
+                        <option value="2">2 in</option>
+                        <option value="3">3 in</option>
+                        <option value="4">4 in</option>
+                        <option value="5">5 in</option>
+                        <option value="6">6 in</option>
+                        <option value="7">7 in</option>
+                        <option value="8">8 in</option>
+                        <option value="9">9 in</option>
+                        <option value="10">10 in</option>
+                        <option value="11">11 in</option>
+                        <option value="12">12 in</option>
+                    </select>
+                </div>
+                <div>
+                    <select class="form-control">
+                        <option value="General Fitness">General Fitness</option>
+                        <option value="Muscle Building">Muscle Building</option>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Endurance Training">Endurance Training</option>
+                        <option value="Team Sports">Team Sports</option>
+
+                    </select>
+                </div>
+            </form>
         </script>
     </div>
 
