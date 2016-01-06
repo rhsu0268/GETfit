@@ -36,32 +36,32 @@
             </div>
             <div class="panel panel-default">
               <div class="panel-body">
-                <h4>Name: Richard Hsu</h4>
-                <h4>Age: 23</h4>
-                <h4>Height: 5 ft 10 ins.</h4>
-                <h4>Weight: 140 lbs.</h4>
-                <h4>BMI:</h4>
-                <h4>Fitness Goal: General Fitness</h4>
+                <h4>Name: {{master.name || "N/A"}}</h4>
+                <h4>Age: {{master.age}}</h4>
+                <h4>Height: {{master.heightFt}} ft {{master.heightIn}} ins.</h4>
+                <h4>Weight: {{master.weight}} lbs.</h4>
+                <h4>BMI: {{master.bmi}}</h4>
+                <h4>Fitness Goal: {{master.fitnessGoal}}</h4>
               </div>
             </div>
-            <form ng-submit="updateProfile()">
+            <form ng-submit="updateProfile(user)">
                 <h3>Update myFitness Background</h3>
                 <div class="form-group">
                     <input type="text"
                        class="form-control"
                        placeholder="Name"
-                       ng-model="name">
+                       ng-model="user.name">
                     </input>
                 </div>
                 <div class="form-group">
                     <input type="number"
                        class="form-control"
                        placeholder="Age"
-                       ng-model="age">
+                       ng-model="user.age">
                     </input>
                 </div>
-                <div style="float:left; ">
-                    <select class="form-control">
+                <div style="float:left;" class="form-group">
+                    <select class="form-control" ng-model="user.heightFt">
                         <option value="1">1 ft</option>
                         <option value="2">2 ft</option>
                         <option value="3">3 ft</option>
@@ -75,7 +75,7 @@
                     </select>
                 </div>
                 <div style="float:right; ">
-                    <select class="form-control">
+                    <select class="form-control" ng-model="user.heightIn">
                         <option value="1">1 in</option>
                         <option value="2">2 in</option>
                         <option value="3">3 in</option>
@@ -90,8 +90,15 @@
                         <option value="12">12 in</option>
                     </select>
                 </div>
-                <div>
-                    <select class="form-control">
+                <div class="form-group">
+                    <input type="number"
+                       class="form-control"
+                       placeholder="Weight"
+                       ng-model="user.weight">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" ng-model="user.fitnessGoal">
                         <option value="General Fitness">General Fitness</option>
                         <option value="Muscle Building">Muscle Building</option>
                         <option value="Weight Loss">Weight Loss</option>
@@ -100,6 +107,7 @@
 
                     </select>
                 </div>
+                <button type="submit" class="btn btn-primary">Update myFitness</button>
             </form>
         </script>
     </div>
