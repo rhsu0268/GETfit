@@ -9,7 +9,13 @@ app.config([
         $stateProvider.state('planWorkout', {
             url: '',
             templateUrl: '/planWorkout.html',
-            controller: 'MainCtrl'
+            controller: 'MainCtrl',
+            resolve: {
+
+                postPromise: ['workouts', function(workouts) {
+                    return workouts.getAll();
+                }]
+            }
 
         });
     }
@@ -22,14 +28,22 @@ app.factory('workouts', ['$http', function($http) {
         workouts: []
     };
 
-    
+    workoutService.getAll = function() {
+        return $http.get('/workouts').success(function(data) {
+            angular.copy(data, workoutService.workouts);
+            console.log(data);
 
+        });
+
+    };
+    return workoutService;
 
 }]);
 
 app.controller('MainCtrl', ['$scope', function($scope) {
 
     var newWorkout = {};
+    //$scope.workouts = workouts.workouts;
     $scope.addWorkout = function()
     {
         newWorkout.exercise1 = $scope.exercise1;

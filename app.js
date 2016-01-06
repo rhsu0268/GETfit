@@ -6,10 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/exercises');
 require('./models/Exercises');
 require('./models/Goals');
 require('./models/Workouts');
+mongoose.connect('mongodb://localhost/exercises');
+
+
 
 
 var routes = require('./routes/index');

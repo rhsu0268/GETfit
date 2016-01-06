@@ -4,6 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Exercise = mongoose.model('Exercise');
 var Goal = mongoose.model('Goal');
+var Workout = mongoose.model('Workout');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,6 +30,47 @@ router.get('/workouts', function(req, res, next) {
         res.json(workouts);
 
     });
+
+});
+
+
+router.post('/workouts', function(req, res, next) {
+
+    var workout = new Workout(req.body);
+
+    workout.save(function(err, workout) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.json(workout);
+
+    });
+
+});
+
+
+router.param('workout', function(req, res, next, id) {
+    var query = Workout.findById(id);
+
+
+    query.exec(function (err, workout) {
+        if (err)
+        {
+            return next(err);
+        }
+        if (!workout)
+        {
+            return next(new Error('can\'t find post'));
+        }
+        req.workout = workout;
+        return next();
+    });
+});
+
+router.get('/workout/:workout', function(req, res) {
+    res.json(req.workout);
 
 });
 
