@@ -18,6 +18,20 @@ router.get('/planWorkout', function(req, res, next) {
   res.render('planWorkout', { title: 'Express' });
 });
 
+router.get('/workouts', function(req, res, next) {
+
+    Workout.find(function(err, workouts) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.json(workouts);
+
+    });
+
+});
+
 router.get('/recommendWorkout', function(req, res, next) {
   res.render('recommendWorkout', { title: 'Express' });
 });

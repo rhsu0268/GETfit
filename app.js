@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/exercises');
 require('./models/Exercises');
 require('./models/Goals');
+require('./models/Workouts');
 
 
 var routes = require('./routes/index');

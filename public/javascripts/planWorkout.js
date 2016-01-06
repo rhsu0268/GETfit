@@ -16,6 +16,17 @@ app.config([
 
 ]);
 
+app.factory('workouts', ['$http', function($http) {
+
+    var workoutService = {
+        workouts: []
+    };
+
+    
+
+
+}]);
+
 app.controller('MainCtrl', ['$scope', function($scope) {
 
     var newWorkout = {};
