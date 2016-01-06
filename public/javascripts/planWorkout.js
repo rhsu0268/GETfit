@@ -18,4 +18,26 @@ app.config([
 
 app.controller('MainCtrl', ['$scope', function($scope) {
 
+    var newWorkout = {};
+    $scope.addWorkout = function()
+    {
+        newWorkout.exercise1 = $scope.exercise1;
+        newWorkout.reps1 = $scope.reps1;
+        newWorkout.exercise2 = $scope.exercise2;
+        newWorkout.reps2 = $scope.reps2;
+        newWorkout.exercise3 = $scope.exercise3;
+        newWorkout.reps3 = $scope.reps3;
+        console.log(newWorkout);
+
+
+        $scope.exercise1 = '';
+        $scope.exercise2 = '';
+        $scope.exercise3 = '';
+        $scope.reps1 = '';
+        $scope.reps2 = '';
+        $scope.reps3 = '';
+
+    }
+
+
 }]);
