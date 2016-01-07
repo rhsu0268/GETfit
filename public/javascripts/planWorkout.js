@@ -31,7 +31,7 @@ app.factory('workouts', ['$http', function($http) {
     workoutService.getAll = function() {
         return $http.get('/workouts').success(function(data) {
             angular.copy(data, workoutService.workouts);
-            console.log(data);
+            //console.log(data);
 
         });
 
@@ -40,21 +40,26 @@ app.factory('workouts', ['$http', function($http) {
 
 }]);
 
-app.controller('MainCtrl', ['$scope', function($scope) {
+app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
 
+    $scope.workouts = workouts.workouts;
     var newWorkout = {};
-    //$scope.workouts = workouts.workouts;
+
     $scope.addWorkout = function()
     {
+        newWorkout.group = $scope.group;
         newWorkout.exercise1 = $scope.exercise1;
         newWorkout.reps1 = $scope.reps1;
         newWorkout.exercise2 = $scope.exercise2;
         newWorkout.reps2 = $scope.reps2;
         newWorkout.exercise3 = $scope.exercise3;
         newWorkout.reps3 = $scope.reps3;
-        console.log(newWorkout);
+        //console.log(newWorkout);
 
+        $scope.workouts.push(newWorkout);
+        console.log(workouts);
 
+        $scope.group = '';
         $scope.exercise1 = '';
         $scope.exercise2 = '';
         $scope.exercise3 = '';
