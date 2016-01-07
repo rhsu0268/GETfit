@@ -2,13 +2,13 @@ var mongoose = require('mongoose');
 
 
 var WorkoutSchema = new mongoose.Schema({
-    group: String,
+    title: String,
+    workoutSets: Number,
+    workoutReps: Number,
     exercise1: String,
-    reps1: Number,
     exercise2: String,
-    reps2: Number,
-    exercise3: String,
-    reps3: Number,
+    exercise3: String
+
     //exercise: { type: mongoose.Schema.Types.ObjectId, ref: 'Exercise'}
 });
 
