@@ -58,13 +58,20 @@ app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
 
     $scope.addWorkout = function()
     {
-        newWorkout.workoutGroup = $scope.workoutGroup;
+        newWorkout.title = $scope.title;
+        newWorkout.workoutSets = $scope.workoutSets;
+        newWorkout.workoutReps = $scope.workoutReps;
+
         newWorkout.exercise1 = $scope.exercise1;
-        newWorkout.reps1 = $scope.reps1;
         newWorkout.exercise2 = $scope.exercise2;
-        newWorkout.reps2 = $scope.reps2;
         newWorkout.exercise3 = $scope.exercise3;
-        newWorkout.reps3 = $scope.reps3;
+        newWorkout.exercise4 = $scope.exercise4;
+        newWorkout.exercise5 = $scope.exercise5;
+        newWorkout.exercise6 = $scope.exercise6;
+        newWorkout.exercise7 = $scope.exercise7;
+        newWorkout.exercise8 = $scope.exercise8;
+        newWorkout.exercise9 = $scope.exercise9;
+
         console.log(newWorkout);
 
         //$scope.workouts.push(newWorkout);
@@ -72,13 +79,20 @@ app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
 
         workouts.create(newWorkout);
 
-        $scope.group = '';
+        $scope.title = '';
+        $scope.workoutSets = '';
+        $scope.workoutReps = '';
+
         $scope.exercise1 = '';
         $scope.exercise2 = '';
         $scope.exercise3 = '';
-        $scope.reps1 = '';
-        $scope.reps2 = '';
-        $scope.reps3 = '';
+        $scope.exercise4 = '';
+        $scope.exercise5 = '';
+        $scope.exercise6 = '';
+        $scope.exercise7 = '';
+        $scope.exercise8 = '';
+        $scope.exercise9 = '';
+
 
     }
 
