@@ -37,12 +37,12 @@
         </div>
 
         <div ng-repeat="workout in workouts">
-            {{workout.group}}
+            {{workout.workoutGroup}} - {{workout.exercise1}}
         </div>
         <form ng-submit="addWorkout()">
             <h3>Add up to 3 Groups of Exercises</h3>
             <div class="form-group">
-                <select class="form-control" ng-model="group">
+                <select class="form-control" ng-model="workoutGroup">
                     <option value="A">A</option>
                     <option value="B">B</option>
                     <option value="C">C</option>
