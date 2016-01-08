@@ -4,7 +4,10 @@
     </div>
 
     <div ng-repeat="workout in workouts">
-        {{workout.workoutGroup}} - {{workout.exercise1}}
+        {{workout.title}} - {{workout.exercise1}}
+        <span>
+            <a href="#/workouts/{{workout._id}}">Information</a>
+        </span>
     </div>
         <h3>Add up to 3 Groups of Exercises</h3>
     <form ng-submit="addWorkout()">

@@ -18,6 +18,13 @@ app.config([
             }
 
         });
+
+        $stateProvider.state('workouts', {
+
+            url: '/workouts/{id}',
+            templateUrl: '/workout.html',
+            controller: 'WorkoutsCtrl'
+        });
     }
 
 ]);
@@ -44,6 +51,14 @@ app.factory('workouts', ['$http', function($http) {
         {
             //console.log(data);
             workoutService.workouts.push(data);
+        });
+    };
+
+
+    workoutService.get = function(id)
+    {
+        return $http.get('/workouts/' + id).then(function (res) {
+            return res.data;
         });
     };
     return workoutService;
@@ -96,5 +111,12 @@ app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
 
     }
 
+
+}]);
+
+
+app.controller('WorkoutsCtrl', ['$scope', '$stateParams', 'workouts', function($scope, $stateParams, workouts)
+{
+    $scope.workout = workouts.workouts[$stateParams.id];
 
 }]);
