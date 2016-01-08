@@ -23,7 +23,15 @@ app.config([
 
             url: '/workouts/{id}',
             templateUrl: '/workout.html',
-            controller: 'WorkoutsCtrl'
+            controller: 'WorkoutsCtrl',
+            resolve: {
+
+                post: ['stateParams'. 'workouts', function($stateParams, workouts) {
+                    return workouts.get($stateParams.id);
+                }]
+
+
+            }
         });
     }
 
