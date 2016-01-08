@@ -26,10 +26,10 @@ app.config([
             controller: 'WorkoutsCtrl',
             resolve: {
 
-                post: ['stateParams'. 'workouts', function($stateParams, workouts) {
-                    return workouts.get($stateParams.id);
+                workout: ['$stateParams', 'workouts', function($stateParams, workouts) {
+                    console.log(workouts.get[$stateParams.id]);
+                    return workouts.get[$stateParams.id];
                 }]
-
 
             }
         });
@@ -66,6 +66,7 @@ app.factory('workouts', ['$http', function($http) {
     workoutService.get = function(id)
     {
         return $http.get('/workouts/' + id).then(function (res) {
+            console.log(res.data);
             return res.data;
         });
     };
@@ -123,8 +124,9 @@ app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
 }]);
 
 
-app.controller('WorkoutsCtrl', ['$scope', '$stateParams', 'workouts', function($scope, $stateParams, workouts)
+app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', function($scope, workouts, workout)
 {
-    $scope.workout = workouts.workouts[$stateParams.id];
+    $scope.workout = workout;
+    console.log($scope.workout);
 
 }]);

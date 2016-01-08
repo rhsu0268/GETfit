@@ -65,6 +65,7 @@ router.param('workout', function(req, res, next, id) {
             return next(new Error('can\'t find post'));
         }
         req.workout = workout;
+        console.log(req.workout);
         return next();
     });
 });
