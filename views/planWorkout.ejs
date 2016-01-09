@@ -34,8 +34,25 @@
             <%- include planWorkout.html %>
         </script>
         <script type="text/ng-template" id="/workout.html">
-            <div class="page-header">
-                <h1>Workout Information</h1>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="page-header">
+                    <h1>{{workout.title}} - Information</h1>
+                </div>
+                <h4>
+                    Sets: {{workout.workoutSets}}
+                </h4>
+                <h4>
+                    Reps: {{workout.workoutReps}}
+                </h4>
+                <h4>
+                    Exercise 1: {{workout.exercise1}}
+                </h4>
+                <h4>
+                    Exercise 2: {{workout.exercise2}}
+                </h4>
+                <h4>
+                    Exercise 3: {{workout.exercise3}}
+                </h4>
             </div>
         </script>
     </div>
