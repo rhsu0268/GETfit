@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var debug = require('debug')('index');
 
 var mongoose = require('mongoose');
 var Exercise = mongoose.model('Exercise');
@@ -58,19 +59,21 @@ router.param('workout', function(req, res, next, id) {
     query.exec(function (err, workout) {
         if (err)
         {
+            debug("Error in querying workout!");
             return next(err);
         }
         if (!workout)
         {
+            debug("Error in finding workout!");
             return next(new Error('can\'t find post'));
         }
         req.workout = workout;
-        console.log(req.workout);
+        debug(req.workout);
         return next();
     });
 });
 
-router.get('/workout/:workout', function(req, res) {
+router.get('/workouts/:workout', function(req, res) {
     res.json(req.workout);
 
 });

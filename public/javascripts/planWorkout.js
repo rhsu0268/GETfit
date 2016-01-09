@@ -27,8 +27,8 @@ app.config([
             resolve: {
 
                 workout: ['$stateParams', 'workouts', function($stateParams, workouts) {
-                    console.log(workouts.get[$stateParams.id]);
-                    return workouts.get[$stateParams.id];
+                    //console.log(workouts.get[$stateParams.id]);
+                    return workouts.get($stateParams.id);
                 }]
 
             }
@@ -47,7 +47,7 @@ app.factory('workouts', ['$http', function($http) {
         return $http.get('/workouts').success(function(data)
         {
             angular.copy(data, workoutService.workouts);
-            //console.log(data);
+            console.log(data);
 
         });
 
@@ -65,8 +65,9 @@ app.factory('workouts', ['$http', function($http) {
 
     workoutService.get = function(id)
     {
+        //console.log('inside workoutService.get');
         return $http.get('/workouts/' + id).then(function (res) {
-            console.log(res.data);
+            //console.log(res);
             return res.data;
         });
     };
@@ -78,7 +79,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
 
     $scope.workouts = workouts.workouts;
     var newWorkout = {};
-    console.log($scope.workouts);
+    //console.log($scope.workouts);
 
     $scope.addWorkout = function()
     {
@@ -126,7 +127,8 @@ app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
 
 app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', function($scope, workouts, workout)
 {
+    //console.log(workout);
     $scope.workout = workout;
-    console.log($scope.workout);
+    //console.log($scope.workout);
 
 }]);
