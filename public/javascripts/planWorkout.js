@@ -19,6 +19,24 @@ app.config([
 
         });
 
+        $stateProvider.state('deleteWorkout', {
+            url: '/deleteWorkout/{id}',
+            templateUrl: '/planWorkout.html',
+            controller: 'MainCtrl'
+            /*
+            controller: function($scope, $stateParams)
+            {
+                $scope.id = $stateParams.id;
+
+            }
+            */
+
+
+        });
+
+
+
+
         $stateProvider.state('workouts', {
 
             url: '/workouts/{id}',
@@ -71,12 +89,27 @@ app.factory('workouts', ['$http', function($http) {
             return res.data;
         });
     };
+
+    workoutService.remove = function(id)
+    {
+        return $http.get('/deleteWorkout/' + id).then(function (res) {
+            return res.data;
+        });
+    }
     return workoutService;
 
 }]);
 
-app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
+app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', function($scope, workouts, $stateParams, $window) {
 
+    //console.log($stateParams.id);
+    if ($stateParams.id)
+    {
+        var workoutId = $stateParams.id;
+        console.log(workoutId);
+        workouts.remove(workoutId);
+        $window.location.href = '/planWorkout';
+    }
     $scope.workouts = workouts.workouts;
     var newWorkout = {};
     //console.log($scope.workouts);
@@ -120,6 +153,14 @@ app.controller('MainCtrl', ['$scope', 'workouts', function($scope, workouts) {
 
 
     }
+    /*
+    $scope.removeWorkout = function()
+    {
+        console.log("Deleting workout!");
+        console.log($routeParams);
+        //workouts.remove($routeParams.id);
+    }
+    */
 
 
 }]);
