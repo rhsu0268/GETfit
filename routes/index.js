@@ -78,6 +78,18 @@ router.get('/workouts/:workout', function(req, res) {
 
 });
 
+router.get('/deleteWorkout/:workout', function(req, res) {
+    //Workout.findById
+    req.workout.remove(function(err) {
+        if (err)
+        {
+            return next(err);
+        }
+    });
+    res.json("successfully deleted workout!");
+
+});
+
 router.get('/recommendWorkout', function(req, res, next) {
   res.render('recommendWorkout', { title: 'Express' });
 });
