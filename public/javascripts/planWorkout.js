@@ -40,7 +40,7 @@ app.config([
         $stateProvider.state('workouts', {
 
             url: '/workouts/{id}',
-            templateUrl: '/workout.html',
+            templateUrl: '/workoutInfo.html',
             controller: 'WorkoutsCtrl',
             resolve: {
 
@@ -170,6 +170,6 @@ app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', function($scope
 {
     //console.log(workout);
     $scope.workout = workout;
-    //console.log($scope.workout);
+    console.log($scope.workout);
 
 }]);
