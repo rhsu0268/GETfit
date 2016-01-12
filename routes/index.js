@@ -51,6 +51,26 @@ router.post('/workouts', function(req, res, next) {
 
 });
 
+router.post('/updateWorkout/:workout', function(req, res, next) {
+
+    var newWorkout = req.body;
+    req.workout.title = newWorkout.title;
+    req.workout.workoutSets = newWorkout.workoutSets;
+    req.workout.workoutReps = newWorkout.workoutReps;
+    req.workout.exercise1 = newWorkout.exercise1;
+    req.workout.exercise2 = newWorkout.exercise2;
+    req.workout.exercise3 = newWorkout.exercise3;
+    req.workout.save(function(err, workout) {
+        if (err)
+        {
+            return next(err);
+        }
+        res.json(newWorkout);
+
+    });
+
+});
+
 
 router.param('workout', function(req, res, next, id) {
     var query = Workout.findById(id);

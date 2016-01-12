@@ -96,6 +96,16 @@ app.factory('workouts', ['$http', function($http) {
             return res.data;
         });
     }
+
+    workoutService.update = function(workout)
+    {
+        console.log("inside update");
+        return $http.post('/updateWorkout/' + workout._id, workout).success(function (data) {
+            console.log("inside update");
+            console.log(data);
+
+        });
+    }
     return workoutService;
 
 }]);
@@ -153,14 +163,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', fun
 
 
     }
-    /*
-    $scope.removeWorkout = function()
-    {
-        console.log("Deleting workout!");
-        console.log($routeParams);
-        //workouts.remove($routeParams.id);
-    }
-    */
+
 
 
 }]);
@@ -171,5 +174,19 @@ app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', function($scope
     //console.log(workout);
     $scope.workout = workout;
     console.log($scope.workout);
+
+    $scope.updateWorkout = function()
+    {
+        $scope.workout.title = $scope.title;
+        $scope.workout.workoutSets = $scope.workoutSets;
+        $scope.workout.workoutReps = $scope.workoutReps;
+
+        $scope.workout.exercise1 = $scope.exercise1;
+        $scope.workout.exercise2 = $scope.exercise2;
+        $scope.workout.exercise3 = $scope.exercise3;
+
+        console.log(workout);
+        workouts.update(workout);
+    }
 
 }]);
