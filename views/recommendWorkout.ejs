@@ -35,6 +35,57 @@
                 <h1>Hey, This is Steve, the Virtual Fitness Trainer!</h1>
             </div>
             <h3>Enter your preferences and I will plan a workout for you</h3>
+            <form ng-submit="recommendWorkout()">
+                <div class="form-group">
+                    Level
+                    <select class="form-control" ng-model="level">
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Expert">Expert</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    Intensity
+                    <select class="form-control" ng-model="intensity">
+                        <option value="Low">Low</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    Goal
+                    <select class="form-control" ng-model="repSet">
+                        <option value="Maximal Strength">Maximal Strength</option>
+                        <option value="Muscle Building">Muscle Buildin</option>
+                        <option value="Endurance">Endurance</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="text"
+                       class="form-control"
+                       placeholder="Exercise 1"
+                       ng-model="exercise1">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <input type="text"
+                       class="form-control"
+                       placeholder="Exercise 2"
+                       ng-model="exercise2">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <input type="text"
+                       class="form-control"
+                       placeholder="Exercise 3"
+                       ng-model="exercise3">
+                    </input>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Recommend Workout</button>
+
+            </form>
         </script>
 
 
