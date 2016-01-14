@@ -176,9 +176,23 @@ router.post('/exercises', function(req, res, next) {
 
 });
 
+
+var seeder = require('mongoose-seeder');
+var data = require('../data/data.json');
 router.get('/seedData', function(req, res, next) {
 
+    //res.send(data);
 
+    seeder.seed(data).then(function(dbData) {
+
+        res.send(dbData);
+
+    }).catch(function(err) {
+
+        // handle error
+        return next(err);
+
+    });
 
 });
 
