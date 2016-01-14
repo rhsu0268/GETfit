@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 
 var ExerciseSchema = new mongoose.Schema({
-    title: String,
-    group: Number,
-    goals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Goal'}]
+    name: String,
+    type: String,
+    main_muscles_worked: String,
+    level: String,
+    sport: String
 
 
 });

@@ -176,4 +176,10 @@ router.post('/exercises', function(req, res, next) {
 
 });
 
+router.get('/seedData', function(req, res, next) {
+
+
+
+});
+
 module.exports = router;

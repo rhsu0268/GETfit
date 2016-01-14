@@ -1,0 +1,21 @@
+{
+    "exercises":
+    {
+        "_model": "Exercise",
+        "exercise1": {
+            "name": "Palms-Up Wrist Curl",
+            "type": "strength",
+            "main_muscles_worked": "forearms",
+            "level": "Beginner",
+            "sport": "No"
+        },
+        "exercise2": {
+            "name": "Seated Concentration Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "level": "Beginner",
+            "sport": "No"
+        }
+    }
+
+}
