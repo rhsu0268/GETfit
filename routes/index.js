@@ -183,7 +183,7 @@ router.get('/seedData', function(req, res, next) {
 
     //res.send(data);
 
-    seeder.seed(data).then(function(dbData) {
+    seeder.seed(data, {dropCollections: true}).then(function(dbData) {
 
         res.send(dbData);
 
