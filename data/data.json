@@ -6,16 +6,256 @@
             "name": "Palms-Up Wrist Curl",
             "type": "strength",
             "main_muscles_worked": "forearms",
-            "level": "Beginner",
+            "level": "beginner",
             "sport": "No"
         },
         "exercise2": {
+            "name": "One-Arm Palm-Up Wrist Curl",
+            "type": "strength",
+            "main_muscles_worked": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise3": {
+            "name": "Palms-Down Wrist Curl",
+            "type": "strength",
+            "main_muscles_worked": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise4": {
+            "name": "Bent Over Two-Dumbell Row",
+            "type": "strength",
+            "main_muscles_worked": "middle back",
+            "other_muscles": "biceps, lats, and shoulders",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise5": {
+            "name": "One-Arm Dumbell Row",
+            "type": "strength",
+            "main_muscles_worked": "middle back",
+            "other_muscles": "biceps, lats, and shoulders",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise6": {
+            "name": "Stiff-Legged Dumbell Deadlift",
+            "type": "strength",
+            "main_muscles_worked": "hamstrings",
+            "other_muscles": "gluts, lower back",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise7": {
+            "name": "Two-Arms Triceps Extension",
+            "type": "strength",
+            "main_muscles_worked": "triceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise8": {
+            "name": "One-Arm Triceps Extension",
+            "type": "strength",
+            "main_muscles_worked": "triceps",
+            "level": "intermediate",
+            "sport": "No"
+        },
+        "exercise9": {
+            "name": "Seated Triceps Extension",
+            "type": "strength",
+            "main_muscles_worked": "triceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise10": {
+            "name": "Triceps Kickback",
+            "type": "strength",
+            "main_muscles_worked": "triceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise11": {
+            "name": "Lying Tricep Extension",
+            "type": "strength",
+            "main_muscles_worked": "triceps",
+            "other_muscles": "chest, shoulders",
+            "level": "intermediate",
+            "sport": "No"
+        },
+        "exercise12": {
+            "name": "Dumbell Alternate Bicep Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "other_muscles": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise13": {
+            "name": "Standing Inner-Biceps Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "level": "intermediate",
+            "sport": "No"
+        },
+        "exercise14": {
+            "name": "Bicep Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "other_muscles": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise15": {
+            "name": "Hammer Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise16": {
+            "name": "Seated Dumbell Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise17": {
+            "name": "Alternate Incline Dumbell Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "other_muscles": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise18": {
+            "name": "Incline Dumbell Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise19": {
+            "name": "Standing One-Arm Dumbell Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise20": {
+            "name": "Seated Inner Biceps Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise21": {
             "name": "Seated Concentration Curl",
             "type": "strength",
             "main_muscles_worked": "biceps",
-            "level": "Beginner",
+            "other_muscles": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise22": {
+            "name": "Seated Concentration Curl",
+            "type": "strength",
+            "main_muscles_worked": "biceps",
+            "other_muscles": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise22": {
+            "name": "Palms-In Shoulder Press",
+            "type": "strength",
+            "main_muscles_worked": "shoulders",
+            "other_muscles": "triceps",
+            "level": "intermediate",
+            "sport": "No"
+        },
+        "exercise23": {
+            "name": "Shoulder Press",
+            "type": "strength",
+            "main_muscles_worked": "shoulders",
+            "other_muscles": "triceps",
+            "level": "intermediate",
+            "sport": "No"
+        },
+        "exercise24": {
+            "name": "Lateral Raise",
+            "type": "strength",
+            "main_muscles_worked": "shoulders",
+            "level": "intermediate",
+            "sport": "No"
+        },
+        "exercise25": {
+            "name": "Lying Rear Delt Raise",
+            "type": "strength",
+            "main_muscles_worked": "shoulders",
+            "level": "intermediate",
+            "sport": "No"
+        },
+        "exercise26": {
+            "name": "Upright Row",
+            "type": "strength",
+            "main_muscles_worked": "shoulders",
+            "other_muscles": "biceps, shoulders",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise27": {
+            "name": "Front Raise",
+            "type": "strength",
+            "main_muscles_worked": "shoulders",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise28": {
+            "name": "Dumbell Shrug",
+            "type": "strength",
+            "main_muscles_worked": "traps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise29": {
+            "name": "Bench Press",
+            "type": "strength",
+            "main_muscles_worked": "chest",
+            "other_muscles": "shoulders, triceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise30": {
+            "name": "Lying Fly",
+            "type": "strength",
+            "main_muscles_worked": "chest",
+            "other_muscles": "shoulders, triceps",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise31": {
+            "name": "Straight-Arm Dumbell Pullover",
+            "type": "strength",
+            "main_muscles_worked": "chest",
+            "other_muscles": "lats, shoulders, triceps",
+            "level": "intermediate",
+            "sport": "No"
+        },
+        "exercise30": {
+            "name": "Weighted Crunch",
+            "type": "strength",
+            "main_muscles_worked": "abdominals",
+            "level": "beginner",
+            "sport": "No"
+        },
+        "exercise31": {
+            "name": "Dumbell Side Bend",
+            "type": "strength",
+            "main_muscles_worked": "abdominals",
+            "level": "beginner",
             "sport": "No"
         }
+
     }
 
 }
