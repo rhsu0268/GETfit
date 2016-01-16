@@ -105,9 +105,5 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         console.log(userWorkouts);
         console.log($scope.exercises.length);
 
-
-
-
-
     }
 }]);
