@@ -77,19 +77,20 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
     $scope.workouts = workouts.workouts;
     console.log($scope.workouts);
     $scope.exercises = exercises.exercises;
-    //console.log($scope.exercises.exercises);
+    console.log($scope.exercises.exercises.exercise1);
 
     var exercisesArray = [];
 
+
     for (var exercise in $scope.exercises.exercises)
     {
-        var tempObj = {};
-        tempObj[exercise] = $scope.exercises[exercise];
+        //var tempObj = {};
+        var tempObj = $scope.exercises.exercises[exercise];
         exercisesArray.push(tempObj);
     }
     //console.log(count);
 
-    console.log(exercisesArray.length);
+    var exercisesCount = exercisesArray.length;
     console.log(exercisesArray);
 
     var userWorkouts = $scope.workouts;
@@ -121,6 +122,20 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         {
             userLevelValue = Math.floor((Math.random() * 4) + 1);
             console.log(userLevelValue);
+
+            // get the workouts that belong to beginner category
+
+            var beginnerExercises = [];
+
+            for (var i = 0; i < exercisesCount; i++)
+            {
+                console.log(exercisesArray[i]);
+                if (exercisesArray[i].level == "beginner")
+                {
+                    beginnerExercises.push(exercise);
+                }
+            }
+            console.log(beginnerExercises.length);
         }
         else if (userLevel == "Intermediate")
         {
@@ -175,6 +190,20 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             exercisesNumber = 4;
             console.log(reps + " " + sets + " " + exercisesNumber);
         }
+
+
+        // plan 3 workouts
+
+        // # 1 - Based on user preferences
+
+        // narrow down results based on user's preferences
+
+
+
+        // # 2 - Based on user's planned workouts
+
+
+        // # 3 - Mix between the 2
 
     }
 }]);

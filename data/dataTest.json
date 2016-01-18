@@ -1,0 +1,21 @@
+{
+    "exercises":
+    {
+        "_model": "Exercise",
+        "exercise": [
+        {
+            "name": "Palms-Up Wrist Curl",
+            "type": "strength",
+            "main_muscles_worked": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        },
+        {
+            "name": "One-Arm Palm-Up Wrist Curl",
+            "type": "strength",
+            "main_muscles_worked": "forearms",
+            "level": "beginner",
+            "sport": "No"
+        }
+    ]}
+}
