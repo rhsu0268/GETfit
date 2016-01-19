@@ -130,7 +130,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
                 //console.log(exercisesArray[i]);
                 if (exercisesArray[i].level == "beginner")
                 {
-                    beginnerExercises.push(exercise);
+                    beginnerExercises.push(exercisesArray[i]);
                 }
             }
         }
@@ -206,18 +206,17 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         // # 1 - Based on user preferences
 
         // narrow down results based on user's preferences
-        console.log(numExercises);
-        var workout1 = [];
+        $scope.workout1 = [];
         for (var i = 0; i < numExercises; i++)
         {
             if (userLevel == "Beginner")
             {
                 var index = Math.floor((Math.random() * beginnerExercises.length));
-                console.log(index);
-                workout1.push(beginnerExercises[index]);
+                $scope.workout1.push(beginnerExercises[index]);
             }
         }
 
+        console.log($scope.workout1);
 
         // # 2 - Based on user's planned workouts
 
