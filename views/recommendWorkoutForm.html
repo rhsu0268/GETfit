@@ -1,0 +1,67 @@
+<div class="col-md-6 col-md-offset-3">
+    <div class="page-header">
+        <h1>Hey, This is Waldo, the Virtual Fitness Trainer!</h1>
+    </div>
+    <h3>Enter your preferences and I will plan a 3 workouts for you!</h3>
+    <form ng-submit="recommendWorkout()">
+        <div class="form-group">
+            Level
+            <select class="form-control" ng-model="level">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Expert">Expert</option>
+            </select>
+        </div>
+        <div class="form-group">
+            Intensity
+            <select class="form-control" ng-model="intensity">
+                <option value="Low">Low</option>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div class="form-group">
+            Goal
+            <select class="form-control" ng-model="goal">
+                <option value="Maximal Strength">Maximal Strength</option>
+                <option value="Muscle Building">Muscle Building</option>
+                <option value="Endurance">Endurance</option>
+            </select>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Recommend Workout</button>
+
+    </form>
+    <br>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <b>Workout 1</b>
+                <div ng-repeat="exercise in workout1">
+                    {{exercise.name}}
+                </div>
+                <br>
+                <div class="rationale">
+                    You are in the {{level}} level and so {{level}} exercises are planned.
+                    <br>
+                    You have selected a goal for {{goal}} and therefore, {{numExercises}} exercises are planned.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <b>Workout 2</b>
+                <div ng-repeat="exercise in workout1">
+                    {{exercise.name}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

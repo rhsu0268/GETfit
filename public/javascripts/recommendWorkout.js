@@ -10,7 +10,7 @@ app.config([
     {
         $stateProvider.state('recommendWorkout', {
             url: '',
-            templateUrl: '/recommendWorkout.html',
+            templateUrl: '/recommendWorkoutForm.html',
             controller: 'MainCtrl',
             resolve: {
 
@@ -106,9 +106,9 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         console.log(goal);
 
 
-        var sets;
-        var reps;
-        var numExercises;
+        $scope.sets;
+        $scope.reps;
+        $scope.numExercises;
 
         // optimization algorithm
 
@@ -142,9 +142,9 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             for (var i = 0; i < exercisesCount; i++)
             {
                 //console.log(exercisesArray[i]);
-                if (exercisesArray[i].level == "beginner")
+                if (exercisesArray[i].level == "intermediate")
                 {
-                    intermediateExercises.push(exercise);
+                    intermediateExercises.push(exercisesArray[i]);
                 }
             }
         }
@@ -174,30 +174,29 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             console.log(intensityValue);
         }
 
-        console.log(reps + " " + sets + " " + numExercises);
         // goal - look at the person's personal fitness goal (change reps and sets accordingly)
         if (goal == "Maximal Strength")
         {
             // set range: Higher rep range: 1 - 5, less exercises
-            reps = 3;
-            sets = 5;
-            numExercises = 2;
-            console.log(reps + " " + sets + " " + numExercises);
+            $scope.reps = 3;
+            $scope.sets = 5;
+            $scope.numExercises = 2;
+            //console.log(reps + " " + sets + " " + numExercises);
 
         }
         else if (goal == "Muscle Building")
         {
-            reps = 8;
-            sets = 3;
-            numExercises = 3;
+            $scope.reps = 8;
+            $scope.sets = 3;
+            $scope.numExercises = 3;
         }
         else if (goal == "Endurance")
         {
             // set range: Lower rep range: 12 - 15, more exercises
-            reps = 13;
-            sets = 1;
-            numExercises = 4;
-            console.log(reps + " " + sets + " " + numExercises);
+            $scope.reps = 13;
+            $scope.sets = 1;
+            $scope.numExercises = 4;
+            //console.log(reps + " " + sets + " " + numExercises);
         }
 
 
@@ -207,7 +206,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         // narrow down results based on user's preferences
         $scope.workout1 = [];
-        for (var i = 0; i < numExercises; i++)
+        for (var i = 0; i < $scope.numExercises; i++)
         {
             if (userLevel == "Beginner")
             {
