@@ -157,21 +157,21 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         // intensity - use a scale from 1 - 10 (score based on user's intensity) as well as age and BMI
         // use it to determine the rest time in between groups of workouts
 
-        var restTime;
+        $scope.restTime;
         if (intensity == "High")
         {
-            intensityValue = Math.floor((Math.random() * 4) + 1);
-            console.log(intensityValue);
+            $scope.restTime = 1;
+            //console.log(intensityValue);
         }
         else if (intensity == "Moderate")
         {
-            intensityValue = Math.floor((Math.random() * 3) + 5);
-            console.log(intensityValue);
+            $scope.restTime = 2;
+            //console.log(intensityValue);
         }
         else if (intensity == "Low")
         {
-            intensityValue = Math.floor((Math.random() * 4) + 7);
-            console.log(intensityValue);
+            $scope.restTime = 3;
+            //console.log(intensityValue);
         }
 
         // goal - look at the person's personal fitness goal (change reps and sets accordingly)
