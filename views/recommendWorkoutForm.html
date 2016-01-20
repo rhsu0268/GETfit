@@ -47,11 +47,10 @@
                 </div>
                 <br>
                 <div class="rationale">
-                    You are in the {{level}} level and so {{level}} exercises are planned.
-                    <br>
-                    You have selected a goal for {{goal}} and therefore, {{numExercises}} exercises are planned.
-                    <br>
-                    You have selected an intensity of {{intensity}} and therefore, your rest time is {{restTime}} minutes.
+                    <div ng-show="level">You are in the {{level}} level and so {{level}} exercises are planned.</div>
+                    <div ng-show="noExercise">{{noExercise}}</div>
+                    <div ng-show="intensity">You have selected an intensity of {{intensity}} and therefore, your rest time is {{restTime}} minutes.</div>
+                    <div ng-show="goal">You have selected a goal for {{goal}} and therefore, {{numExercises}} exercises are planned.</div>
                 </div>
             </div>
         </div>

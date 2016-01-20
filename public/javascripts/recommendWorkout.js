@@ -112,8 +112,8 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         // optimization algorithm
 
-        var userLevelValue;
-        var intensityValue;
+        //var userLevelValue;
+        //var intensityValue;
 
         var beginnerExercises = [];
         var intermediateExercises = [];
@@ -121,8 +121,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         // userLevel - grab the exercises in the user's level
         if (userLevel == "Beginner")
         {
-            userLevelValue = Math.floor((Math.random() * 4) + 1);
-            //console.log(userLevelValue);
+            //userLevelValue = Math.floor((Math.random() * 4) + 1);
 
             // get the workouts that belong to beginner category
             for (var i = 0; i < exercisesCount; i++)
@@ -136,8 +135,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         }
         else if (userLevel == "Intermediate")
         {
-            userLevelValue = Math.floor((Math.random() * 3) + 5);
-            //console.log(userLevelValue);
+            //userLevelValue = Math.floor((Math.random() * 3) + 5);
 
             for (var i = 0; i < exercisesCount; i++)
             {
@@ -150,8 +148,9 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         }
         else if (userLevel == "Expert")
         {
-            userLevelValue = Math.floor((Math.random() * 4) + 7);
+            //userLevelValue = Math.floor((Math.random() * 4) + 7);
             console.log(userLevelValue);
+            $scope.noExercise = "Sorry, you have selected the expert level and there are no exercises for that in my DB yet!"
         }
 
         // intensity - use a scale from 1 - 10 (score based on user's intensity) as well as age and BMI
@@ -213,6 +212,12 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
                 var index = Math.floor((Math.random() * beginnerExercises.length));
                 $scope.workout1.push(beginnerExercises[index]);
             }
+            else if (userLevel == "Intermediate")
+            {
+                var index = Math.floor((Math.random() * intermediateExercises.length));
+                $scope.workout1.push(intermediateExercises[index]);
+            }
+
         }
 
         console.log($scope.workout1);
