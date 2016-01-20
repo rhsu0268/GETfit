@@ -91,6 +91,14 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
     var exercisesCount = exercisesArray.length;
     //console.log(exercisesArray);
 
+    for (var exercise in $scope.workouts)
+    {
+        console.log($scope.workouts);
+        //var tempObj = $scope.;
+        //exercisesArray.push(tempObj);
+    }
+    console.log(typeof($scope.workouts));
+
     var userWorkouts = $scope.workouts;
     //console.log(userWorkouts);
 
@@ -99,6 +107,12 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
     $scope.recommendWorkout = function()
     {
         console.log("Inside recommend function!");
+        console.log($scope.level);
+        if (!$scope.level || !$scope.intensity || !$scope.goal)
+        {
+            console.log("Please fill in all the fields");
+            return;
+        }
 
         $scope.userLevel = $scope.level;
         $scope.userIntensity = $scope.intensity;
@@ -232,6 +246,20 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         console.log($scope.workout1);
 
         // # 2 - Based on user's planned workouts
+        $scope.workout2 = [];
+        console.log(userWorkouts);
+
+        var plannedExercises = [];
+        console.log(typeof(userWorkouts));
+
+        for (var i = 0; i < userWorkouts.length; i++)
+        {
+            plannedExercises.push.userWorkouts[i].exercise1;
+            plannedExercises.push.userWorkouts[i].exercise2;
+            plannedExercises.push.userWorkouts[i].exercise3;
+        }
+
+        console.log(plannedExercises);
 
 
         // # 3 - Mix between the 2
