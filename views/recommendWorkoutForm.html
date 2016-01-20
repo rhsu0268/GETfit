@@ -42,15 +42,16 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <b>Workout 1</b>
-                <div ng-repeat="exercise in workout1">
+                <div ng-repeat="exercise in workout1 track by $index">
                     {{exercise.name}}
                 </div>
                 <br>
                 <div class="rationale">
-                    <div ng-show="level">You are in the {{level}} level and so {{level}} exercises are planned.</div>
+                    <div ng-show="userLevel">You are in the {{level}} level and so {{level}} exercises are planned.</div>
                     <div ng-show="noExercise">{{noExercise}}</div>
-                    <div ng-show="intensity">You have selected an intensity of {{intensity}} and therefore, your rest time is {{restTime}} minutes.</div>
-                    <div ng-show="goal">You have selected a goal for {{goal}} and therefore, {{numExercises}} exercises are planned.</div>
+                    <div ng-show="userIntensity">You have selected an intensity of {{intensity}} and therefore, your rest time is {{restTime}} minutes.</div>
+                    <div ng-show="userGoal">You have selected a goal for {{goal}} and therefore, {{numExercises}} exercises are planned.</div>
+                    <div ng-show="userGoal">Sets: {{sets}}  Reps: {{reps}}</div>
                 </div>
             </div>
         </div>

@@ -100,10 +100,10 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
     {
         console.log("Inside recommend function!");
 
-        var userLevel = $scope.level;
-        var intensity = $scope.intensity;
-        var goal = $scope.goal;
-        console.log(goal);
+        $scope.userLevel = $scope.level;
+        $scope.userIntensity = $scope.intensity;
+        $scope.userGoal = $scope.goal;
+        //console.log(goal);
 
 
         $scope.sets;
@@ -119,7 +119,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         var intermediateExercises = [];
 
         // userLevel - grab the exercises in the user's level
-        if (userLevel == "Beginner")
+        if ($scope.userLevel == "Beginner")
         {
             //userLevelValue = Math.floor((Math.random() * 4) + 1);
 
@@ -133,7 +133,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
                 }
             }
         }
-        else if (userLevel == "Intermediate")
+        else if ($scope.userLevel == "Intermediate")
         {
             //userLevelValue = Math.floor((Math.random() * 3) + 5);
 
@@ -146,10 +146,10 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
                 }
             }
         }
-        else if (userLevel == "Expert")
+        else
         {
             //userLevelValue = Math.floor((Math.random() * 4) + 7);
-            console.log(userLevelValue);
+            //console.log(userLevelValue);
             $scope.noExercise = "Sorry, you have selected the expert level and there are no exercises for that in my DB yet!"
         }
 
@@ -157,24 +157,24 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         // use it to determine the rest time in between groups of workouts
 
         $scope.restTime;
-        if (intensity == "High")
+        if ($scope.userIntensity == "High")
         {
             $scope.restTime = 1;
             //console.log(intensityValue);
         }
-        else if (intensity == "Moderate")
+        else if ($scope.userIntensity == "Moderate")
         {
             $scope.restTime = 2;
             //console.log(intensityValue);
         }
-        else if (intensity == "Low")
+        else if ($scope.userIntensity == "Low")
         {
             $scope.restTime = 3;
             //console.log(intensityValue);
         }
 
         // goal - look at the person's personal fitness goal (change reps and sets accordingly)
-        if (goal == "Maximal Strength")
+        if ($scope.userGoal== "Maximal Strength")
         {
             // set range: Higher rep range: 1 - 5, less exercises
             $scope.reps = 3;
@@ -183,13 +183,13 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             //console.log(reps + " " + sets + " " + numExercises);
 
         }
-        else if (goal == "Muscle Building")
+        else if ($scope.userGoal == "Muscle Building")
         {
             $scope.reps = 8;
             $scope.sets = 3;
             $scope.numExercises = 3;
         }
-        else if (goal == "Endurance")
+        else if ($scope.userGoal == "Endurance")
         {
             // set range: Lower rep range: 12 - 15, more exercises
             $scope.reps = 13;
@@ -198,6 +198,8 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             //console.log(reps + " " + sets + " " + numExercises);
         }
 
+        console.log(beginnerExercises);
+        console.log(intermediateExercises);
 
         // plan 3 workouts
 
@@ -205,19 +207,23 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         // narrow down results based on user's preferences
         $scope.workout1 = [];
-        for (var i = 0; i < $scope.numExercises; i++)
+        while (!checkIfArrayIsUnique($scope.workout1))
         {
-            if (userLevel == "Beginner")
+            for (var i = 0; i < $scope.numExercises; i++)
             {
-                var index = Math.floor((Math.random() * beginnerExercises.length));
-                $scope.workout1.push(beginnerExercises[index]);
-            }
-            else if (userLevel == "Intermediate")
-            {
-                var index = Math.floor((Math.random() * intermediateExercises.length));
-                $scope.workout1.push(intermediateExercises[index]);
-            }
 
+                if ($scope.userLevel == "Beginner")
+                {
+                    var index = Math.floor((Math.random() * beginnerExercises.length));
+                    $scope.workout1.push(beginnerExercises[index]);
+                }
+                else if ($scope.userLevel == "Intermediate")
+                {
+                    var index = Math.floor((Math.random() * intermediateExercises.length));
+                    $scope.workout1.push(intermediateExercises[index]);
+                }
+
+            }
         }
 
         console.log($scope.workout1);
@@ -227,5 +233,28 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         // # 3 - Mix between the 2
 
+    }
+
+    function checkIfArrayIsUnique(myArray)
+    {
+        // handle the case that the array has 0 elements (first iteration)
+        if (myArray.length == 0)
+        {
+            return false;
+        }
+        for (var i = 0; i < myArray.length; i++)
+        {
+            for (var j = 0; j < myArray.length; j++)
+            {
+                if (i != j)
+                {
+                    if (myArray[i] == myArray[j])
+                    {
+                        return false; // means there are duplicate values
+                    }
+                }
+            }
+        }
+        return true; // means there are no duplicate values.
     }
 }]);
