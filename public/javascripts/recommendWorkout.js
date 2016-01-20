@@ -105,6 +105,15 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         $scope.userGoal = $scope.goal;
         //console.log(goal);
 
+        if ($scope.userLevel == "Expert")
+        {
+            $scope.userLevel = "";
+            $scope.userIntensity = "";
+            $scope.userGoal = "";
+            $scope.noExercise = "Sorry, you have selected the Expert level and there are no exercises for that in my DB yet!"
+            return;
+        }
+
 
         $scope.sets;
         $scope.reps;
@@ -145,12 +154,6 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
                     intermediateExercises.push(exercisesArray[i]);
                 }
             }
-        }
-        else
-        {
-            //userLevelValue = Math.floor((Math.random() * 4) + 7);
-            //console.log(userLevelValue);
-            $scope.noExercise = "Sorry, you have selected the expert level and there are no exercises for that in my DB yet!"
         }
 
         // intensity - use a scale from 1 - 10 (score based on user's intensity) as well as age and BMI
