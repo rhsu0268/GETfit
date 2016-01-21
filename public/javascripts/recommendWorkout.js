@@ -102,7 +102,11 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
     }
     console.log(userWorkouts);
 
+    $scope.workout2 = [];
     //console.log(userWorkouts);
+
+    var plannedExercises = [];
+    $scope.secondWorkoutPlanned = false;
 
 
     // turn the workouts into an array
@@ -127,6 +131,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             $scope.userIntensity = "";
             $scope.userGoal = "";
             $scope.noExercise = "Sorry, you have selected the Expert level and there are no exercises for that in my DB yet!"
+            getSecondWorkout(plannedExercises);
             return;
         }
 
@@ -250,33 +255,9 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         //console.log($scope.workout1);
 
         // # 2 - Based on user's planned workouts
-        $scope.workout2 = [];
-        //console.log(userWorkouts);
+        getSecondWorkout(plannedExercises);
+        console.log($scope.workout2);
 
-        var plannedExercises = [];
-
-
-        for (var i = 0; i < userWorkouts.length; i++)
-        {
-            plannedExercises.push(userWorkouts[i].exercise1);
-            plannedExercises.push(userWorkouts[i].exercise2);
-            plannedExercises.push(userWorkouts[i].exercise3);
-        }
-
-        //console.log(plannedExercises);
-
-        while (!checkIfArrayIsUnique($scope.workout2))
-        {
-            $scope.workout2 = [];
-            // pick three random from planned exercises
-            for (var i = 0; i < 3; i++)
-            {
-                var index = Math.floor((Math.random() * plannedExercises.length));
-                console.log(plannedExercises[index]);
-                $scope.workout2.push(plannedExercises[index]);
-
-            }
-        }
 
         //console.log($scope.workout2);
 
@@ -307,5 +288,33 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             }
         }
         return true; // means there are no duplicate values.
+    }
+
+
+    function getSecondWorkout(plannedExercises)
+    {
+        for (var i = 0; i < userWorkouts.length; i++)
+        {
+            plannedExercises.push(userWorkouts[i].exercise1);
+            plannedExercises.push(userWorkouts[i].exercise2);
+            plannedExercises.push(userWorkouts[i].exercise3);
+        }
+
+        //console.log(plannedExercises);
+
+        while (!checkIfArrayIsUnique($scope.workout2))
+        {
+            $scope.workout2 = [];
+            // pick three random from planned exercises
+            for (var i = 0; i < 3; i++)
+            {
+                var index = Math.floor((Math.random() * plannedExercises.length));
+                console.log(plannedExercises[index]);
+                $scope.workout2.push(plannedExercises[index]);
+
+            }
+            console.log($scope.workout2);
+        }
+        $scope.secondWorkoutPlanned = true;
     }
 }]);
