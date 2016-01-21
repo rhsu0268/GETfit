@@ -31,7 +31,19 @@
 
         </div>
         <script type="text/ng-template" id="/workoutSummary.html">
-            <h1>Workout Summary</h1>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="page-header">
+                    <h1>performed Workouts</h1>
+
+                    <div ng-repeat="workout in workouts">
+                        {{workout.title}} - {{workout.exercise1}}
+                        <span>
+                            <a href="#/workouts/{{workout._id}}">Information</a>
+                            <a href="" ng-click="updateWorkout(workout)">Delete</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </script>
 
     </div>
