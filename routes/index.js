@@ -196,4 +196,21 @@ router.get('/seedData', function(req, res, next) {
 
 });
 
+var plotly = require('plotly')('rhsu0268', 'pxqr91oaa8');
+router.get('/graphTest', function(req, res, next) {
+
+    var data = [{x:[0,1,2], y:[3,2,1], type: 'bar'}];
+    var graphOptions = {fileopt : "extend", filename : "nodenodenode"};
+
+    plotly.plot(data, graphOptions, function (err, msg) {
+        console.log(data);
+        console.log(msg);
+    });
+
+    //router.go('res.url');
+
+});
+
+
+
 module.exports = router;

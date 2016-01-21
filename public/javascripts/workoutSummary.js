@@ -78,8 +78,11 @@ app.factory('workouts', ['$http', function($http) {
 
 }]);
 
+
+
 app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', function($scope, workouts, $stateParams, $window) {
 
     $scope.workouts = workouts.workouts;
+
 
 }]);
