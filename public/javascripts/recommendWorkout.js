@@ -41,7 +41,7 @@ app.factory('workouts', ['$http', function($http) {
         return $http.get('/workouts').success(function(data)
         {
             angular.copy(data, workoutService.workouts);
-            console.log(data);
+            //console.log(typeof(data));
 
         });
 
@@ -75,6 +75,9 @@ app.factory('exercises', ['$http', function($http) {
 app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '$window', function($scope, workouts, exercises, $stateParams, $window) {
 
     $scope.workouts = workouts.workouts;
+
+    var userWorkouts = [];
+
     //console.log($scope.workouts);
     $scope.exercises = exercises.exercises;
     //console.log($scope.exercises.exercises.exercise1);
@@ -93,13 +96,12 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
     for (var exercise in $scope.workouts)
     {
-        console.log($scope.workouts);
-        //var tempObj = $scope.;
-        //exercisesArray.push(tempObj);
+        //console.log($scope.workouts[exercise]);
+        var tempObj = $scope.workouts[exercise];
+        userWorkouts.push(tempObj);
     }
-    console.log(typeof($scope.workouts));
+    console.log(userWorkouts);
 
-    var userWorkouts = $scope.workouts;
     //console.log(userWorkouts);
 
 
@@ -226,6 +228,8 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         $scope.workout1 = [];
         while (!checkIfArrayIsUnique($scope.workout1))
         {
+            // make sure that you empty the array
+            $scope.workout1 = [];
             for (var i = 0; i < $scope.numExercises; i++)
             {
 
@@ -243,24 +247,38 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             }
         }
 
-        console.log($scope.workout1);
+        //console.log($scope.workout1);
 
         // # 2 - Based on user's planned workouts
         $scope.workout2 = [];
-        console.log(userWorkouts);
+        //console.log(userWorkouts);
 
         var plannedExercises = [];
-        console.log(typeof(userWorkouts));
+
 
         for (var i = 0; i < userWorkouts.length; i++)
         {
-            plannedExercises.push.userWorkouts[i].exercise1;
-            plannedExercises.push.userWorkouts[i].exercise2;
-            plannedExercises.push.userWorkouts[i].exercise3;
+            plannedExercises.push(userWorkouts[i].exercise1);
+            plannedExercises.push(userWorkouts[i].exercise2);
+            plannedExercises.push(userWorkouts[i].exercise3);
         }
 
-        console.log(plannedExercises);
+        //console.log(plannedExercises);
 
+        while (!checkIfArrayIsUnique($scope.workout2))
+        {
+            $scope.workout2 = [];
+            // pick three random from planned exercises
+            for (var i = 0; i < 3; i++)
+            {
+                var index = Math.floor((Math.random() * plannedExercises.length));
+                console.log(plannedExercises[index]);
+                $scope.workout2.push(plannedExercises[index]);
+
+            }
+        }
+
+        //console.log($scope.workout2);
 
         // # 3 - Mix between the 2
 
@@ -271,6 +289,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         // handle the case that the array has 0 elements (first iteration)
         if (myArray.length == 0)
         {
+            console.log("no elements");
             return false;
         }
         for (var i = 0; i < myArray.length; i++)
@@ -281,6 +300,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
                 {
                     if (myArray[i] == myArray[j])
                     {
+                        console.log("duplicate exercises detected!");
                         return false; // means there are duplicate values
                     }
                 }
