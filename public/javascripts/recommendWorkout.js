@@ -108,6 +108,8 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
     var plannedExercises = [];
     $scope.secondWorkoutPlanned = false;
 
+    $scope.workout3 = [];
+    $scope.thirdWorkoutPlanned = false;
 
     // turn the workouts into an array
     $scope.recommendWorkout = function()
@@ -261,7 +263,9 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         //console.log($scope.workout2);
 
-        // # 3 - Mix between the 2
+        // # 3 - Random workout
+        getThirdWorkout();
+        console.log($scope.workout3);
 
     }
 
@@ -316,5 +320,25 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             console.log($scope.workout2);
         }
         $scope.secondWorkoutPlanned = true;
+    }
+
+    function getThirdWorkout()
+    {
+        //console.log(plannedExercises);
+
+        while (!checkIfArrayIsUnique($scope.workout3))
+        {
+            $scope.workout3 = [];
+            // pick three random from planned exercises
+            for (var i = 0; i < 3; i++)
+            {
+                var index = Math.floor((Math.random() * exercisesArray.length));
+                console.log(exercisesArray[index]);
+                $scope.workout3.push(exercisesArray[index]);
+
+            }
+            console.log($scope.workout3);
+        }
+        $scope.thirdWorkoutPlanned = true;
     }
 }]);

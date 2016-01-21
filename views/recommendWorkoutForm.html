@@ -70,4 +70,18 @@
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <b>Workout 3</b>
+                <div ng-repeat="exercise in workout3">
+                    {{exercise.name}}
+                </div>
+                <br>
+                <div ng-show="thirdWorkoutPlanned">
+                    These are 3 random exercises for you to try out.
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
