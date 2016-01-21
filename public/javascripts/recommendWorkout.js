@@ -83,6 +83,9 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
     //console.log($scope.exercises.exercises.exercise1);
 
     var exercisesArray = [];
+    $scope.workout1 = [];
+
+    $scope.restTime;
 
 
     for (var exercise in $scope.exercises.exercises)
@@ -147,14 +150,34 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         //var userLevelValue;
         //var intensityValue;
 
+
+
+
+
+        //console.log($scope.workout1);
+        getFirstWorkout();
+
+        // # 2 - Based on user's planned workouts
+        getSecondWorkout(plannedExercises);
+        console.log($scope.workout2);
+
+
+        //console.log($scope.workout2);
+
+        // # 3 - Random workout
+        getThirdWorkout();
+        console.log($scope.workout3);
+
+    }
+
+    function getFirstWorkout()
+    {
         var beginnerExercises = [];
         var intermediateExercises = [];
-
+        console.log("getting first workout");
         // userLevel - grab the exercises in the user's level
         if ($scope.userLevel == "Beginner")
         {
-            //userLevelValue = Math.floor((Math.random() * 4) + 1);
-
             // get the workouts that belong to beginner category
             for (var i = 0; i < exercisesCount; i++)
             {
@@ -179,24 +202,18 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             }
         }
 
-        // intensity - use a scale from 1 - 10 (score based on user's intensity) as well as age and BMI
-        // use it to determine the rest time in between groups of workouts
-
-        $scope.restTime;
+        // intensity - use it to determine the rest time in between groups of workouts
         if ($scope.userIntensity == "High")
         {
             $scope.restTime = 1;
-            //console.log(intensityValue);
         }
         else if ($scope.userIntensity == "Moderate")
         {
             $scope.restTime = 2;
-            //console.log(intensityValue);
         }
         else if ($scope.userIntensity == "Low")
         {
             $scope.restTime = 3;
-            //console.log(intensityValue);
         }
 
         // goal - look at the person's personal fitness goal (change reps and sets accordingly)
@@ -206,7 +223,6 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             $scope.reps = 3;
             $scope.sets = 5;
             $scope.numExercises = 2;
-            //console.log(reps + " " + sets + " " + numExercises);
 
         }
         else if ($scope.userGoal == "Muscle Building")
@@ -221,7 +237,6 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
             $scope.reps = 13;
             $scope.sets = 1;
             $scope.numExercises = 4;
-            //console.log(reps + " " + sets + " " + numExercises);
         }
 
         console.log(beginnerExercises);
@@ -232,7 +247,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         // # 1 - Based on user preferences
 
         // narrow down results based on user's preferences
-        $scope.workout1 = [];
+
         while (!checkIfArrayIsUnique($scope.workout1))
         {
             // make sure that you empty the array
@@ -253,20 +268,6 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
             }
         }
-
-        //console.log($scope.workout1);
-
-        // # 2 - Based on user's planned workouts
-        getSecondWorkout(plannedExercises);
-        console.log($scope.workout2);
-
-
-        //console.log($scope.workout2);
-
-        // # 3 - Random workout
-        getThirdWorkout();
-        console.log($scope.workout3);
-
     }
 
     function checkIfArrayIsUnique(myArray)
