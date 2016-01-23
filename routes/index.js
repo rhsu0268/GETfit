@@ -197,19 +197,63 @@ router.get('/seedData', function(req, res, next) {
 });
 
 var plotly = require('plotly')('rhsu0268', 'pxqr91oaa8');
+var fs = require('fs');
 router.get('/graphTest', function(req, res, next) {
 
+    /*
     var data = [{x:[0,1,2], y:[3,2,1], type: 'bar'}];
-    var graphOptions = {fileopt : "extend", filename : "nodenodenode"};
+    var graphOptions = {fileopt : "extend", filename : "fitnessGraph"};
+
 
     plotly.plot(data, graphOptions, function (err, msg) {
-        console.log(data);
+        //console.log(data);
         console.log(msg);
+        console.log(msg.filename);
+
+
+        //res.send(msg.filename);
+
+        plotly.getFigure('rhsu0268', '3', function(err, figure) {
+
+            if (err)
+            {
+                console.log(err);
+            }
+
+            var imgOpts = {
+                format: 'png',
+                width: 1000,
+                height: 500
+            };
+
+            plotly.getImage(figure, imgOpts, function(error, imageStream) {
+
+                if (error)
+                {
+                    return next(error);
+                }
+                var fileStream = fs.createWriteStream('fitness.png');
+                console.log(fileStream);
+                res.sendFile(imageStream.pipe(fileStream).path);
+
+
+            });
+
+        });
+
     });
 
-    //router.go('res.url');
+    */
+
 
 });
+
+router.get('/getGraph', function(req, res, next) {
+
+
+
+});
+
 
 
 

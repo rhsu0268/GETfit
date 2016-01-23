@@ -1,5 +1,6 @@
 var app = angular.module('workoutSummary', ['ui.router']);
 
+
 console.log("Inside workoutSummary.js!");
 
 app.config([
@@ -79,10 +80,22 @@ app.factory('workouts', ['$http', function($http) {
 }]);
 
 
-
+//var plotly = require('plotly')('rhsu0268', 'pxqr91oaa8');
 app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', function($scope, workouts, $stateParams, $window) {
 
     $scope.workouts = workouts.workouts;
+
+    var data = [
+    {
+        x: ['2013-10-04 22:23:00', '2013-11-04 22:23:00', '2013-12-04 22:23:00'],
+        y: [1, 3, 6],
+        type: 'scatter'
+      }
+    ];
+
+    Plotly.newPlot('myDiv', data);
+
+
 
 
 }]);
