@@ -125,6 +125,35 @@ app.factory('workouts', ['$http', function($http) {
 
 }]);
 
+
+app.factory('completedWorkouts', ['$http', function($http) {
+
+    var completedWorkoutsService = {
+        completedWorkouts: []
+    };
+
+    completedWorkoutsService.getAll = function() {
+        return $http.get('/completedWorkouts').success(function(data)
+        {
+            //angular.copy(data, workoutService.workouts);
+            console.log(data);
+
+        });
+
+    };
+
+    completedWorkoutsService.create = function(workout)
+    {
+        return $http.post('/completedWorkout', workout).success(function (data)
+        {
+            console.log(data);
+            //workoutService.workouts.push(data);
+        });
+    };
+    return completedWorkoutsService;
+
+}]);
+
 app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', function($scope, workouts, $stateParams, $window) {
 
     //console.log($stateParams.id);

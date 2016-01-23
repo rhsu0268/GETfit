@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var Exercise = mongoose.model('Exercise');
 var Goal = mongoose.model('Goal');
 var Workout = mongoose.model('Workout');
+var WorkoutSummary = mongoose.model('WorkoutSummary');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -248,11 +249,38 @@ router.get('/graphTest', function(req, res, next) {
 
 });
 
-router.get('/getGraph', function(req, res, next) {
 
+router.get('/completedWorkouts', function(req, res, next) {
 
+    WorkoutSummary.find(function(err, completedWorkouts) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.json(completedWorkouts);
+
+    });
 
 });
+
+
+router.post('/completedWorkouts', function(req, res, next) {
+
+    var completedWorkout = new WorkoutSummary(req.body);
+
+    completedWorkout.save(function(err, completedWorkout) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.json(completedWorkout);
+
+    });
+
+});
+
 
 
 
