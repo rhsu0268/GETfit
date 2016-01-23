@@ -148,12 +148,6 @@ app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', fun
         newWorkout.exercise1 = $scope.exercise1;
         newWorkout.exercise2 = $scope.exercise2;
         newWorkout.exercise3 = $scope.exercise3;
-        newWorkout.exercise4 = $scope.exercise4;
-        newWorkout.exercise5 = $scope.exercise5;
-        newWorkout.exercise6 = $scope.exercise6;
-        newWorkout.exercise7 = $scope.exercise7;
-        newWorkout.exercise8 = $scope.exercise8;
-        newWorkout.exercise9 = $scope.exercise9;
 
         console.log(newWorkout);
 
