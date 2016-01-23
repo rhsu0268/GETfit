@@ -144,7 +144,7 @@ app.factory('completedWorkouts', ['$http', function($http) {
 
     completedWorkoutsService.create = function(workout)
     {
-        return $http.post('/completedWorkout', workout).success(function (data)
+        return $http.post('/completedWorkouts', workout).success(function (data)
         {
             console.log(data);
             //workoutService.workouts.push(data);
@@ -229,7 +229,7 @@ app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', function($scope
 
 }]);
 
-app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', function($scope, workouts, workout)
+app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWorkouts', function($scope, workouts, workout, completedWorkouts)
 {
     //console.log(workout);
     $scope.workout = workout;
@@ -277,6 +277,8 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', function($scop
             exercise3: exercise3,
             exercise3Summary: [e3s1, e3s2, e3s3]
         };
+
+        completedWorkouts.create(workoutSummary);
 
         console.log(workoutSummary);
 
