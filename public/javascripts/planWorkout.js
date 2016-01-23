@@ -243,7 +243,7 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', function($scop
         var e3s2 = $scope.e3s2;
         var e3s3 = $scope.e3s3;
 
-        var exerciseSummary = {
+        var workoutSummary = {
             month: month,
             day: day,
             year: year,
@@ -255,7 +255,7 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', function($scop
             exercise3Summary: [e3s1, e3s2, e3s3]
         };
 
-        console.log(exerciseSummary);
+        console.log(workoutSummary);
 
     }
 
