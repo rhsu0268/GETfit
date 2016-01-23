@@ -212,18 +212,51 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', function($scop
     $scope.workout = workout;
     console.log($scope.workout);
 
-    $scope.updateWorkout = function()
+    $scope.addCompletedWorkout = function()
     {
-        $scope.workout.title = $scope.title;
-        $scope.workout.workoutSets = $scope.workoutSets;
-        $scope.workout.workoutReps = $scope.workoutReps;
+        console.log("Adding completed workout!");
+        var month = $scope.month;
+        console.log(month);
 
-        $scope.workout.exercise1 = $scope.exercise1;
-        $scope.workout.exercise2 = $scope.exercise2;
-        $scope.workout.exercise3 = $scope.exercise3;
+        var day = $scope.day;
+        console.log(day);
 
-        console.log(workout);
-        workouts.update(workout);
+        var year = $scope.year;
+        console.log(year);
+
+        // store the exercise
+        var exercise1 = $scope.workout.exercise1;
+        var exercise2 = $scope.workout.exercise2;
+        var exercise3 = $scope.workout.exercise3;
+
+        // store the exercise9
+
+        var e1s1 = $scope.e1s1;
+        var e1s2 = $scope.e1s2;
+        var e1s3 = $scope.e1s3;
+
+        var e2s1 = $scope.e2s1;
+        var e2s2 = $scope.e2s2;
+        var e2s3 = $scope.e2s3;
+
+        var e3s1 = $scope.e3s1;
+        var e3s2 = $scope.e3s2;
+        var e3s3 = $scope.e3s3;
+
+        var exerciseSummary = {
+            month: month,
+            day: day,
+            year: year,
+            exercise1: exercise1,
+            exercise1Summary: [e1s1, e1s2, e1s3],
+            exercise2: exercise2,
+            exercise2Summary: [e2s1, e2s2, e2s3],
+            exercise3: exercise3,
+            exercise3Summary: [e3s1, e3s2, e3s3]
+        };
+
+        console.log(exerciseSummary);
+
     }
 
 }]);
