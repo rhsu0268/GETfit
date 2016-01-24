@@ -19,7 +19,17 @@ mongoose.connect('mongodb://localhost/exercises');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+
 var app = express();
+
+/*
+app.configure(function() {
+  app.use(express.cookieParser('keyboard cat'));
+  app.use(express.session({ cookie: { maxAge: 60000 }}));
+  app.use(flash());
+});
+*/
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

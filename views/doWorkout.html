@@ -3,7 +3,10 @@
         <h1>{{workout.title}} - Workout Progress</h1>
     </div>
         <h4>Please enter your workout summary starting with the date</h4>
-
+        <div flash-message="5000" ></div>
+        <!-- 5000 milli-secs is the display duration.
+             Flash alert will be automatically dismissed after 5000 milli-secs.
+        -->
         <form ng-submit="addCompletedWorkout()">
             <div class="form-group">
                 <input type="text"

@@ -250,6 +250,7 @@ router.get('/graphTest', function(req, res, next) {
 });
 
 
+
 router.get('/completedWorkouts', function(req, res, next) {
 
     WorkoutSummary.find(function(err, completedWorkouts) {
@@ -257,6 +258,8 @@ router.get('/completedWorkouts', function(req, res, next) {
         {
             return next(err);
         }
+    
+
 
         res.json(completedWorkouts);
 

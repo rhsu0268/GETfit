@@ -1,4 +1,4 @@
-var app = angular.module('planWorkout', ['ui.router']);
+var app = angular.module('planWorkout', ['ui.router', 'flash']);
 
 console.log("Inside planWorkout.js!");
 
@@ -229,7 +229,7 @@ app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', function($scope
 
 }]);
 
-app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWorkouts', function($scope, workouts, workout, completedWorkouts)
+app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWorkouts', 'Flash', function($scope, workouts, workout, completedWorkouts, Flash)
 {
     //console.log(workout);
     $scope.workout = workout;
@@ -280,8 +280,21 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWork
 
         completedWorkouts.create(workoutSummary);
 
+        $scope.successAlert();
+
         console.log(workoutSummary);
 
     }
+
+
+    $scope.successAlert = function () {
+       var message = '<strong>Well done!</strong> You successfully entered your summary for this workout!';
+       Flash.create('success', message, 'custom-class');
+       // First argument (success) is the type of the flash alert
+       // Second argument (message) is the message displays in the flash alert
+       // you can inclide html as message (not just text)
+       // Third argument (custom-class) is the custom class for the perticular flash alert
+    }
+
 
 }]);
