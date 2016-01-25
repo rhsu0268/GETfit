@@ -5,6 +5,7 @@ var WorkoutSummarySchema = new mongoose.Schema({
     month: String,
     day: Number,
     year: Number,
+    title: String,
     exercise1: String,
     exercise1Summary: [Number],
     exercise2: String,

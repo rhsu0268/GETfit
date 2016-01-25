@@ -247,6 +247,8 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWork
         var year = $scope.year;
         console.log(year);
 
+        var title = $scope.workout.title;
+
         // store the exercise
         var exercise1 = $scope.workout.exercise1;
         var exercise2 = $scope.workout.exercise2;
@@ -270,6 +272,7 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWork
             month: month,
             day: day,
             year: year,
+            title: title,
             exercise1: exercise1,
             exercise1Summary: [e1s1, e1s2, e1s3],
             exercise2: exercise2,

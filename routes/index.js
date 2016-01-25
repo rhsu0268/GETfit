@@ -258,7 +258,7 @@ router.get('/completedWorkouts', function(req, res, next) {
         {
             return next(err);
         }
-    
+
 
 
         res.json(completedWorkouts);
@@ -281,6 +281,18 @@ router.post('/completedWorkouts', function(req, res, next) {
         res.json(completedWorkout);
 
     });
+
+});
+
+router.get('/deleteCompletedWorkouts', function(req, res) {
+    //Workout.findById
+    WorkoutSummary.remove({}, function(err) {
+        if (err)
+        {
+            return next(err);
+        }
+    });
+    res.send("successfully deleted completed workouts!");
 
 });
 
