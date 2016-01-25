@@ -134,6 +134,21 @@ app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$win
         uniqueWorkouts.push(completedWorkoutsArray[i].title);
     }
 
+    $scope.showGraph = function(completedWorkout)
+    {
+        console.log("Inside show graph");
+        $scope.selected = completedWorkout;
+
+        console.log($scope.selected);
+    }
+
+    $scope.isSelected = function(completedWorkout)
+    {
+        return $scope.selected === completedWorkout;
+    }
+
+
+
 
 
     console.log(completedWorkoutsArray[0]);

@@ -38,9 +38,9 @@
 
 
                     <!--<div ng-repeat="completedWorkout in completedWorkouts | unique: 'id' ">-->
-                    <div ng-repeat="completedWorkout in completedWorkouts">
+                    <div ng-repeat="completedWorkout in completedWorkouts" ng-class="{ active : isSelected(completedWorkout) }">
 
-                        <a href="" ng-click='showGraph()'>
+                        <a ng-click='showGraph(completedWorkout)'>
                             {{completedWorkout.month}} {{completedWorkout.day}}, {{completedWorkout.year}} - {{completedWorkout.title}}
                         </a>
                     </div>
