@@ -135,6 +135,50 @@ app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$win
     }
 
 
+
+    console.log(completedWorkoutsArray[0]);
+    console.log(completedWorkoutsArray[1]);
+
+    //var exercise1 = completedWorkoutsArray[0].exercise1;
+    var exercise1 =
+    {
+        x: [1, 2, 3],
+        y: completedWorkoutsArray[0].exercise1Summary,
+        name: completedWorkoutsArray[0].exercise1,
+        type: 'scatter'
+    };
+
+    var exercise2 =
+    {
+        x: [1, 2, 3],
+        y: completedWorkoutsArray[0].exercise2Summary,
+        name: completedWorkoutsArray[0].exercise2,
+        type: 'scatter'
+    };
+
+    var exercise3 =
+    {
+        x: [1, 2, 3],
+        y: completedWorkoutsArray[0].exercise3Summary,
+        name: completedWorkoutsArray[0].exercise3,
+        type: 'scatter'
+    };
+
+
+
+    var data = [exercise1, exercise2, exercise3];
+
+
+    var layout =
+    {
+        showLegend: true,
+        legend: {
+            x: 1,
+            y: 1
+        }
+    };
+    
+    /*
     var data = [
     {
         x: ['2013-10-04 22:23:00', '2013-11-04 22:23:00', '2013-12-04 22:23:00'],
@@ -142,6 +186,7 @@ app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$win
         type: 'scatter'
       }
     ];
+    */
 
     Plotly.newPlot('myDiv', data);
 
