@@ -92,6 +92,7 @@ app.factory('completedWorkouts', ['$http', function($http) {
         {
             console.log(data);
             angular.copy(data, completedWorkoutsService.completedWorkouts);
+            console.log(completedWorkoutsService.completedWorkouts);
 
         });
 
@@ -113,7 +114,26 @@ app.factory('completedWorkouts', ['$http', function($http) {
 //var plotly = require('plotly')('rhsu0268', 'pxqr91oaa8');
 app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$window', function($scope, completedWorkouts, $stateParams, $window) {
 
-    //$scope.workouts = workouts.workouts;
+    $scope.completedWorkouts = completedWorkouts.completedWorkouts;
+    console.log(completedWorkouts.completedWorkouts);
+
+    var completedWorkoutsArray = [];
+
+    // process the data and turn it into an array
+    for (var completedWorkout in completedWorkouts.completedWorkouts)
+    {
+        var tempObj = completedWorkouts.completedWorkouts[completedWorkout];
+        completedWorkoutsArray.push(tempObj);
+    }
+    console.log(completedWorkoutsArray);
+
+    var uniqueWorkouts = [];
+
+    for (var i = 0; i < completedWorkoutsArray.length; i++)
+    {
+        uniqueWorkouts.push(completedWorkoutsArray[i].title);
+    }
+
 
     var data = [
     {
@@ -129,3 +149,26 @@ app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$win
 
 
 }]);
+
+app.filter('unique', function() {
+    return function(collection, title)
+    {
+        var output = [];
+        var keys = [];
+
+        angular.forEach(collection, function(item) {
+            var key = item[title];
+            if (keys.indexOf(key) === -1)
+            {
+                keys.push(key);
+                output.push(item);
+            }
+
+        });
+
+        return output;
+
+    };
+
+
+});

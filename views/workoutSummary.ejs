@@ -36,15 +36,12 @@
                 <div class="page-header">
                     <h1>Completed Workouts</h1>
 
-                    <!--
-                    <div ng-repeat="workout in workouts">
-                        {{workout.title}} - {{workout.exercise1}}
-                        <span>
-                            <a href="#/workouts/{{workout._id}}">Information</a>
-                            <a href="" ng-click="updateWorkout(workout)">Delete</a>
-                        </span>
+
+                    <div ng-repeat="completedWorkout in completedWorkouts | unique: 'id' ">
+                        {{completedWorkout.title}}
+
                     </div>
-                    -->
+
                 </div>
                 <div id="myDiv" style="width: 480px; height: 400px;"></div>
             </div>
