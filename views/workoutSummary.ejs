@@ -37,13 +37,16 @@
                     <h1>Completed Workouts</h1>
 
 
-                    <div ng-repeat="completedWorkout in completedWorkouts | unique: 'id' ">
-                        {{completedWorkout.title}}
+                    <!--<div ng-repeat="completedWorkout in completedWorkouts | unique: 'id' ">-->
+                    <div ng-repeat="completedWorkout in completedWorkouts">
 
+                        <a href="" ng-click='showGraph()'>
+                            {{completedWorkout.month}} {{completedWorkout.day}}, {{completedWorkout.year}} - {{completedWorkout.title}}
+                        </a>
                     </div>
 
                 </div>
-                <div id="myDiv" style="width: 480px; height: 400px;"></div>
+                <div id="myDiv" style="width: 550px; height: 400px;"></div>
             </div>
         </script>
 

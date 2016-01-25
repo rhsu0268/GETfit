@@ -171,13 +171,23 @@ app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$win
 
     var layout =
     {
+        title: 'Workout Summary',
+        xaxis: {
+            title: 'Set',
+            tick0: 0,
+            dtick: 1
+
+        },
+        yaxis: {
+            title: 'Reps'
+        },
         showLegend: true,
         legend: {
             x: 1,
             y: 1
         }
     };
-    
+
     /*
     var data = [
     {
@@ -188,12 +198,14 @@ app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$win
     ];
     */
 
-    Plotly.newPlot('myDiv', data);
+    Plotly.newPlot('myDiv', data, layout);
 
 
 
 
 }]);
+
+/*
 
 app.filter('unique', function() {
     return function(collection, title)
@@ -217,3 +229,4 @@ app.filter('unique', function() {
 
 
 });
+*/
