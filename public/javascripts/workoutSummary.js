@@ -13,8 +13,8 @@ app.config([
             controller: 'MainCtrl',
             resolve: {
 
-                postPromise: ['workouts', function(workouts) {
-                    return workouts.getAll();
+                postPromise: ['completedWorkouts', function(completedWorkouts) {
+                    return completedWorkouts.getAll();
                 }]
             }
 
@@ -24,6 +24,7 @@ app.config([
 
 ]);
 
+/*
 app.factory('workouts', ['$http', function($http) {
 
     var workoutService = {
@@ -78,12 +79,41 @@ app.factory('workouts', ['$http', function($http) {
     return workoutService;
 
 }]);
+*/
+
+app.factory('completedWorkouts', ['$http', function($http) {
+
+    var completedWorkoutsService = {
+        completedWorkouts: []
+    };
+
+    completedWorkoutsService.getAll = function() {
+        return $http.get('/completedWorkouts').success(function(data)
+        {
+            console.log(data);
+            angular.copy(data, completedWorkoutsService.completedWorkouts);
+
+        });
+
+    };
+
+    completedWorkoutsService.create = function(workout)
+    {
+        return $http.post('/completedWorkouts', workout).success(function (data)
+        {
+            console.log(data);
+            //workoutService.workouts.push(data);
+        });
+    };
+    return completedWorkoutsService;
+
+}]);
 
 
 //var plotly = require('plotly')('rhsu0268', 'pxqr91oaa8');
-app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', function($scope, workouts, $stateParams, $window) {
+app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$window', function($scope, completedWorkouts, $stateParams, $window) {
 
-    $scope.workouts = workouts.workouts;
+    //$scope.workouts = workouts.workouts;
 
     var data = [
     {
