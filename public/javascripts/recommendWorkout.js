@@ -47,6 +47,15 @@ app.factory('workouts', ['$http', function($http) {
 
     };
 
+    workoutService.create = function(workout)
+    {
+        return $http.post('/workouts', workout).success(function (data)
+        {
+            //console.log(data);
+            workoutService.workouts.push(data);
+        });
+    };
+
     return workoutService;
 
 }]);
@@ -167,6 +176,31 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         // # 3 - Random workout
         getThirdWorkout();
         console.log($scope.workout3);
+
+    }
+
+    $scope.saveWorkout1 = function(workout1, sets, reps)
+    {
+        console.log("saveWorkout1");
+        console.log(workout1);
+
+        console.log(sets);
+        var newWorkout = {};
+
+        for (var i = 0; i < workout1.length; i++)
+        {
+            newWorkout["exercise" + i] = workout1[i].name;
+        }
+        console.log(newWorkout);
+        newWorkout.title = "Workout 1";
+        newWorkout.workoutSets = sets;
+        newWorkout.workoutReps = reps;
+
+        workouts.create(newWorkout);
+        console.log("Workout saved!");
+
+
+
 
     }
 

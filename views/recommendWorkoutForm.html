@@ -52,7 +52,9 @@
                     <div ng-show="userIntensity">You have selected an intensity of {{intensity}} and therefore, your rest time is {{restTime}} minutes.</div>
                     <div ng-show="userGoal">You have selected a goal for {{goal}} and therefore, {{numExercises}} exercises are planned.</div>
                     <div ng-show="userGoal">Sets: {{sets}}  Reps: {{reps}}</div>
+                    <button ng-show="userLevel" type="submit" class="btn btn-primary" ng-click="saveWorkout1(workout1, sets, reps)">Save Workout 1</button>
                 </div>
+
             </div>
         </div>
     </div>
