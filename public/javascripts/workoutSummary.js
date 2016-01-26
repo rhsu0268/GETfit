@@ -115,7 +115,7 @@ app.factory('completedWorkouts', ['$http', function($http) {
 app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$window', function($scope, completedWorkouts, $stateParams, $window) {
 
     $scope.completedWorkouts = completedWorkouts.completedWorkouts;
-    console.log(completedWorkouts.completedWorkouts);
+    //console.log(completedWorkouts.completedWorkouts);
 
     var completedWorkoutsArray = [];
 
@@ -196,9 +196,14 @@ app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$win
     {
         return $scope.selected === completedWorkout;
     }
+
+    $scope.showProgress = function(workoutTitle)
+    {
+        console.log("Inside showProgress!");
+        console.log(workoutTitle);
+    }
 }]);
 
-/*
 
 app.filter('unique', function() {
     return function(collection, title)
@@ -222,4 +227,3 @@ app.filter('unique', function() {
 
 
 });
-*/

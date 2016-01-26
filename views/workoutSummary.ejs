@@ -45,6 +45,12 @@
                         </a>
                     </div>
 
+                    <br>
+                    <div ng-repeat="completedWorkout in completedWorkouts | unique: 'id' ">
+                        <a ng-click='showProgress(completedWorkout.title)'>{{completedWorkout.title}}</a>
+                    </div>
+
+
                 </div>
                 <div id="myDiv" style="width: 550px; height: 400px;"></div>
             </div>
