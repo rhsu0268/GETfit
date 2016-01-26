@@ -270,18 +270,6 @@ router.get('/completedWorkouts', function(req, res, next) {
 
 router.post('/completedWorkouts', function(req, res, next) {
 
-    WorkoutSummary.find({title: req.workout.title}, function(err, completedWorkouts) {
-        if (err)
-        {
-            return next(err);
-        }
-
-
-
-        res.json(completedWorkouts);
-
-    });
-    /*
     var completedWorkout = new WorkoutSummary(req.body);
 
     completedWorkout.save(function(err, completedWorkout) {
@@ -293,7 +281,7 @@ router.post('/completedWorkouts', function(req, res, next) {
         res.json(completedWorkout);
 
     });
-    */
+
 
 });
 
