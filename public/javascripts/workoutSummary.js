@@ -137,87 +137,65 @@ app.controller('MainCtrl', ['$scope', 'completedWorkouts', '$stateParams', '$win
     $scope.showGraph = function(completedWorkout)
     {
         console.log("Inside show graph");
-        $scope.selected = completedWorkout;
+        $scope.selectedWorkout = completedWorkout;
 
-        console.log($scope.selected);
+        console.log($scope.selectedWorkout);
+
+        var exercise1 =
+        {
+            x: [1, 2, 3],
+            y: $scope.selectedWorkout.exercise1Summary,
+            name: $scope.selectedWorkout .exercise1,
+            type: 'scatter'
+        };
+
+        var exercise2 =
+        {
+            x: [1, 2, 3],
+            y: $scope.selectedWorkout.exercise2Summary,
+            name: $scope.selectedWorkout .exercise2,
+            type: 'scatter'
+        };
+
+        var exercise3 =
+        {
+            x: [1, 2, 3],
+            y: $scope.selectedWorkout.exercise3Summary,
+            name: $scope.selectedWorkout .exercise3,
+            type: 'scatter'
+        };
+
+        var data = [exercise1, exercise2, exercise3];
+
+
+        var layout =
+        {
+            title: 'Workout Summary',
+            xaxis: {
+                title: 'Set',
+                tick0: 0,
+                dtick: 1
+
+            },
+            yaxis: {
+                title: 'Reps'
+            },
+            showLegend: true,
+            legend: {
+                x: 1,
+                y: 1
+            }
+        };
+
+        Plotly.newPlot('myDiv', data, layout);
+
+
     }
 
     $scope.isSelected = function(completedWorkout)
     {
         return $scope.selected === completedWorkout;
     }
-
-
-
-
-
-    console.log(completedWorkoutsArray[0]);
-    console.log(completedWorkoutsArray[1]);
-
-    //var exercise1 = completedWorkoutsArray[0].exercise1;
-    var exercise1 =
-    {
-        x: [1, 2, 3],
-        y: completedWorkoutsArray[0].exercise1Summary,
-        name: completedWorkoutsArray[0].exercise1,
-        type: 'scatter'
-    };
-
-    var exercise2 =
-    {
-        x: [1, 2, 3],
-        y: completedWorkoutsArray[0].exercise2Summary,
-        name: completedWorkoutsArray[0].exercise2,
-        type: 'scatter'
-    };
-
-    var exercise3 =
-    {
-        x: [1, 2, 3],
-        y: completedWorkoutsArray[0].exercise3Summary,
-        name: completedWorkoutsArray[0].exercise3,
-        type: 'scatter'
-    };
-
-
-
-    var data = [exercise1, exercise2, exercise3];
-
-
-    var layout =
-    {
-        title: 'Workout Summary',
-        xaxis: {
-            title: 'Set',
-            tick0: 0,
-            dtick: 1
-
-        },
-        yaxis: {
-            title: 'Reps'
-        },
-        showLegend: true,
-        legend: {
-            x: 1,
-            y: 1
-        }
-    };
-
-    /*
-    var data = [
-    {
-        x: ['2013-10-04 22:23:00', '2013-11-04 22:23:00', '2013-12-04 22:23:00'],
-        y: [1, 3, 6],
-        type: 'scatter'
-      }
-    ];
-    */
-
-    Plotly.newPlot('myDiv', data, layout);
-
-
-
-
 }]);
 
 /*
