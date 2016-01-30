@@ -120,63 +120,6 @@ router.get('/workoutSummary', function(req, res, next) {
   res.render('workoutSummary', { title: 'Express' });
 });
 
-router.param('exercise', function(req, res, next, id) {
-
-    var query = Exercise.findById(id);
-
-    query.exec(function(err, post) {
-        if (err)
-        {
-            return next(err);
-        }
-        id (!exercise)
-        {
-            return next(new Error('can\'t find exercise'));
-        }
-
-        req.exercise = exercise;
-        return next();
-
-
-    });
-
-});
-
-
-router.get('/exercises/:exercise', function(req, res) {
-    res.json(req.exercise);
-
-});
-
-// route to get all the exercises
-router.get('/exercises', function(req, res, next) {
-    Exercise.find(function(err, exercises) {
-
-        if (err)
-        {
-            return next(err);
-        }
-
-        res.json(exercises);
-
-    });
-});
-
-
-router.post('/exercises', function(req, res, next) {
-
-    var exercise = new Exercise(req.body);
-
-    exercise.save(function(err, exercise) {
-        if (err)
-        {
-            return next(err);
-        }
-        res.json(exercise);
-    });
-
-});
-
 
 var seeder = require('mongoose-seeder');
 var data = require('../data/data.json');
