@@ -22,75 +22,8 @@
     <div ng-include src="'/header/header.ejs'"></div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <ui-view></ui-view>
+        <h1>Welcome to GETfit!</h1>
 
-            </div>
-        </div>
-        <script type="text/ng-template" id="/home.html">
-            <div>
-                <h1>GETfit</h1>
-            </div>
-
-            <div class="page-header">
-                <h1>Welcome to GETfit</h1>
-            </div>
-            <div ng-repeat="exercise in workoutPlan | orderBy: '+set'">
-                {{exercise.title}} - Group: {{exercise.group}}
-                <span>
-                    <a href="#/exercises/{{$index}}">Information</a>
-                </span>
-            </div>
-
-            <form ng-submit="addExercise()">
-                <h3>Add a new exercise</h3>
-                <div class="form-group">
-                    <input type="text"
-                       class="form-control"
-                       placeholder="Title"
-                       ng-model="title">
-                    </input>
-                </div>
-                <div class="form-group">
-                    <input type="number"
-                       class="form-control"
-                       placeholder="Group"
-                       ng-model="group">
-                    </input>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Exercise</button>
-            </form>
-        </script>
-        <script type="text/ng-template" id="/exercises.html">
-            <div class="page-header">
-                <h3>
-                    {{exercise.title}}
-                </h3>
-            </div>
-            <div ng-repeat="info in exercise.goal">
-                Rep: {{info.rep}} Set: {{info.set}}
-            </div>
-
-            <form ng-submit="addFitnessGoal()" style="margin-top:30px;">
-                <h3>Add Fitness Goal</h3>
-                <div class="form-group">
-                    <input type="number"
-                       class="form-control"
-                       placeholder="Rep"
-                       ng-model="rep">
-                    </input>
-                </div>
-                <div class="form-group">
-                    <input type="number"
-                       class="form-control"
-                       placeholder="Set"
-                       ng-model="set">
-                    </input>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Goal</button>
-            </form>
-        <script>
 
     </div>
 
