@@ -7,10 +7,13 @@ var bodyParser = require('body-parser');
 var debug = require('debug')('http');
 
 var mongoose = require('mongoose');
+var passport = require('passport');
 require('./models/Exercises');
 require('./models/Goals');
 require('./models/Workouts');
 require('./models/WorkoutSummaries');
+require('./models/Users');
+require('./config/passport');
 mongoose.connect('mongodb://localhost/exercises');
 
 
@@ -42,6 +45,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 
 app.use('/', routes);
 app.use('/users', users);
