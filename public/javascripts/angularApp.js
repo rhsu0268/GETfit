@@ -143,3 +143,11 @@ app.controller('AuthCtrl', ['$scope', '$state', 'auth', function($scope, $state,
 
 
 }]);
+
+app.controller('NavCtrl', ['$scope', 'auth', function($scope, auth) {
+
+    $scope.isLoggedin = auth.isLoggedIn;
+    $scope.currentUser = auth.currentUser;
+    $scope.logOut = auth.logOut;
+
+}]);

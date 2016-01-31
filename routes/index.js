@@ -317,7 +317,19 @@ router.post('/login', function(req, res, next) {
 
 
 
+router.get('/users', function(req, res, next) {
 
+    User.find(function(err, workouts) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.json(workouts);
+
+    });
+
+});
 
 
 
