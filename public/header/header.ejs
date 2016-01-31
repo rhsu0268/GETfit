@@ -11,10 +11,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="myFitness">myFitness</a></li>
-                <li><a href="planWorkout">Plan Workout</a></li>
-                <li><a href="recommendWorkout">Recommend Workout</a></li>
-                <li><a href="workoutSummary">Workout Summary</a></li>
+                <li ng-show="isLoggedIn()"><a href="myFitness">myFitness</a></li>
+                <li ng-show="isLoggedIn()"><a href="planWorkout">Plan Workout</a></li>
+                <li ng-show="isLoggedIn()"><a href="recommendWorkout">Recommend Workout</a></li>
+                <li ng-show="isLoggedIn()"><a href="workoutSummary">Workout Summary</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
