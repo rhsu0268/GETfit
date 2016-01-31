@@ -123,11 +123,16 @@ app.controller('AuthCtrl', ['$scope', '$state', 'auth', function($scope, $state,
 {
     $scope.user = {};
 
+    $scope.isLoggedin = auth.isLoggedIn;
+    $scope.currentUser = auth.currentUser;
+    $scope.logOut = auth.logOut;
+
     $scope.register = function()
     {
         auth.register($scope.user).error(function(error) {
             $scope.error = error;
         }).then(function() {
+
             $state.go('home');
         });
     };
@@ -144,9 +149,10 @@ app.controller('AuthCtrl', ['$scope', '$state', 'auth', function($scope, $state,
 
 }]);
 
+
 app.controller('NavCtrl', ['$scope', 'auth', function($scope, auth) {
 
-    $scope.isLoggedin = auth.isLoggedIn;
+    $scope.isLoggedIn = auth.isLoggedIn;
     $scope.currentUser = auth.currentUser;
     $scope.logOut = auth.logOut;
 
