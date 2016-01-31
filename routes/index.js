@@ -262,6 +262,9 @@ router.get('/deleteCompletedWorkouts', function(req, res) {
 
 var passport = require('passport');
 var User = mongoose.model('User');
+var jwt = require('express-jwt');
+var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
+
 
 // logging and logging out
 router.post('/register', function(req, res, next) {

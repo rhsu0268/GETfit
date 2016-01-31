@@ -22,10 +22,56 @@
     <div ng-include src="'/header/header.ejs'"></div>
 
     <div class="container">
-        <h1>Welcome to GETfit!</h1>
+        <ui-view></ui-view>
 
 
     </div>
+    <script type="text/ng-template" id="/register.html">
+        <div class="page-header">
+            <h1>GETfit</h1>
+        </div>
+
+        <div ng-show="error" class="alert alert-danger row">
+            <span>{{error.message}}</span>
+        </div>
+
+        <form ng-submit="register()" style="margin-top:30px">
+            <h3>Register</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" ng-model="user.username"></input>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" ng-model="user.password"></input>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </script>
+    <script type="text/ng-template" id="/login.html">
+        <div class="page-header">
+            <h1>GETfit</h1>
+        </div>
+
+        <div ng-show="error" class="alert alert-danger row">
+            <span>{{error.message}}</span>
+        </div>
+
+        <form ng-submit="login()" style="margin-top:30px">
+            <h3>Login</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" ng-model="user.username"></input>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" ng-model="user.password"></input>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </script>
+    <script type="text/ng-template" id="/home.html">
+        <div class="page-header">
+            <h1>GETfit</h1>
+        </div>
+    </script>
+
 
 
 

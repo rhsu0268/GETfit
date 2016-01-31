@@ -17,6 +17,8 @@ app.config([
 ]);
 
 
+
+
 app.controller('MainCtrl', ['$scope', function($scope) {
 
     $scope.updateProfile = function(user)
