@@ -88,9 +88,7 @@ app.factory('auth', ['$http', '$window', function($http, $window) {
 
 
 
-app.controller('MainCtrl', 'auth', ['$scope', function($scope) {
-    /*
-    $scope.isLoggedIn = auth.isLoggedIn;
+app.controller('MainCtrl', ['$scope', function($scope) {
 
     $scope.updateProfile = function(user)
     {
@@ -121,7 +119,7 @@ app.controller('MainCtrl', 'auth', ['$scope', function($scope) {
 
 
     }
-    */
+    
 
 
 }]);
