@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('recommendWorkout').factory('auth', ['$http', '$window', function($http, $window)
+app.factory('auth', ['$http', '$window', function($http, $window)
 {
     var auth = {};
 
