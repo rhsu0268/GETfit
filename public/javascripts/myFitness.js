@@ -80,6 +80,7 @@ app.factory('auth', ['$http', '$window', function($http, $window) {
     auth.logOut = function()
     {
         $window.localStorage.removeItem('GETfit-token');
+        
     };
     return auth;
 }]);
@@ -119,7 +120,7 @@ app.controller('MainCtrl', ['$scope', function($scope) {
 
 
     }
-    
+
 
 
 }]);
