@@ -31,6 +31,8 @@ app.config([
 
 ]);
 
+
+
 app.factory('workouts', ['$http', function($http) {
 
     var workoutService = {
@@ -376,4 +378,12 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         }
         $scope.thirdWorkoutPlanned = true;
     }
+}]);
+
+app.controller('NavCtrl', ['$scope', 'auth', function($scope, auth) {
+
+    $scope.isLoggedIn = auth.isLoggedIn;
+    $scope.currentUser = auth.currentUser;
+    $scope.logOut = auth.logOut;
+
 }]);
