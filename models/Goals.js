@@ -1,10 +1,14 @@
 var mongoose = require('mongoose');
 
-
 var GoalSchema = new mongoose.Schema({
-    numRep: Number,
-    numSet: Number,
-    exercise: { type: mongoose.Schema.Types.ObjectId, ref: 'Exercise'}
+    name: String,
+    age: Number,
+    heightFt: String,
+    heightIn: String,
+    BMI: Number,
+    FitnessGoal: String
+
+
 });
 
 mongoose.model('Goal', GoalSchema);

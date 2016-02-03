@@ -80,16 +80,57 @@ app.factory('auth', ['$http', '$window', function($http, $window) {
     auth.logOut = function()
     {
         $window.localStorage.removeItem('GETfit-token');
-        
+
     };
     return auth;
 }]);
 
 
+app.factory('goals', ['$http', function($http) {
+
+    var goalService = {
+        goals: []
+    };
+
+    goalService.get = function() {
+        return $http.get('/goals').success(function(data)
+        {
+            angular.copy(data, goalService.goals);
+            console.log(data);
+
+        });
+
+    };
+
+    goalService.create = function(goal)
+    {
+        return $http.post('/goals', goal).success(function (data)
+        {
+            //console.log(data);
+            goalService.goals.push(data);
+        });
+    };
+
+
+    goalService.update = function(goal)
+    {
+        console.log("inside update");
+        return $http.post('/updateGoals/' + goal._id, goal).success(function (data) {
+            console.log("inside update");
+            console.log(data);
+
+        });
+    }
+    return goalService;
+
+}]);
 
 
 
-app.controller('MainCtrl', ['$scope', function($scope) {
+app.controller('MainCtrl', ['$scope', 'auth', function($scope, auth) {
+
+    $scope.currentUser = auth.currentUser();
+    console.log($scope.currentUser);
 
     $scope.updateProfile = function(user)
     {
