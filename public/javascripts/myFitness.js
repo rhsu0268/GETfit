@@ -127,7 +127,7 @@ app.factory('goals', ['$http', function($http) {
 
 
 
-app.controller('MainCtrl', ['$scope', 'auth', function($scope, auth) {
+app.controller('MainCtrl', ['$scope', 'auth', 'goals', function($scope, auth, goals) {
 
     $scope.currentUser = auth.currentUser();
     console.log($scope.currentUser);
@@ -149,6 +149,8 @@ app.controller('MainCtrl', ['$scope', 'auth', function($scope, auth) {
         $scope.master.bmi = Math.round( top / bottom );
 
         $scope.master.fitnessGoal = $scope.user.fitnessGoal;
+
+        goals.create($scope.master);
 
         $scope.user.name = '';
         $scope.user.age = '';
