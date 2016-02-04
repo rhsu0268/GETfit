@@ -35,9 +35,11 @@ router.get('/workouts', function(req, res, next) {
 
 });
 
-router.get('/goals', function(req, res, next) {
+router.get('/goals/:userId', function(req, res, next) {
 
-    Goal.find(function(err, goals) {
+    console.log(req.params.userId);
+
+    Goal.find({user: req.params.userId}, function(err, goals) {
         if (err)
         {
             return next(err);

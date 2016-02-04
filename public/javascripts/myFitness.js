@@ -12,8 +12,8 @@ app.config([
             controller: 'MainCtrl',
             resolve: {
 
-                postPromise: ['goals', function(goals) {
-                    return goals.get();
+                postPromise: ['goals', 'auth', function(goals, auth) {
+                    return goals.get(auth.getUserId());
                 }]
             }
 
@@ -109,11 +109,11 @@ app.factory('goals', ['$http', function($http) {
         goals: []
     };
 
-    goalService.get = function() {
-        return $http.get('/goals').success(function(data)
+    goalService.get = function(userId) {
+        return $http.get('/goals/' + userId).then(function(res)
         {
-            angular.copy(data, goalService.goals);
-            console.log(data);
+            angular.copy(res.data, goalService.goals);
+            console.log(res.data);
 
         });
 
@@ -147,7 +147,7 @@ app.factory('goals', ['$http', function($http) {
 app.controller('MainCtrl', ['$scope', 'auth', 'goals', function($scope, auth, goals) {
 
     $scope.currentUser = auth.currentUser();
-    $scope.userId = auth.getUserId();
+    //$scope.userId = auth.getUserId(userId);
 
     //console.log($scope.userId);
     console.log(goals.goals);
