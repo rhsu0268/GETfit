@@ -9,7 +9,13 @@ app.config([
         $stateProvider.state('myFitness', {
             url: '',
             templateUrl: '/myFitness.html',
-            controller: 'MainCtrl'
+            controller: 'MainCtrl',
+            resolve: {
+
+                postPromise: ['goals', function(goals) {
+                    return goals.get();
+                }]
+            }
 
         });
 
@@ -56,6 +62,17 @@ app.factory('auth', ['$http', '$window', function($http, $window) {
             var payload = JSON.parse($window.atob(token.split('.')[1]));
 
             return payload.username;
+        }
+    };
+
+    auth.getUserId = function()
+    {
+        if (auth.isLoggedIn())
+        {
+            var token = auth.getToken();
+            var payload = JSON.parse($window.atob(token.split('.')[1]));
+
+            return payload._id;
         }
     };
 
@@ -130,7 +147,10 @@ app.factory('goals', ['$http', function($http) {
 app.controller('MainCtrl', ['$scope', 'auth', 'goals', function($scope, auth, goals) {
 
     $scope.currentUser = auth.currentUser();
-    console.log($scope.currentUser);
+    $scope.userId = auth.getUserId();
+
+    //console.log($scope.userId);
+    console.log(goals.goals);
 
     $scope.updateProfile = function(user)
     {
@@ -141,6 +161,7 @@ app.controller('MainCtrl', ['$scope', 'auth', 'goals', function($scope, auth, go
         $scope.master.heightFt = $scope.user.heightFt;
         $scope.master.heightIn = $scope.user.heightIn;
         $scope.master.weight = $scope.user.weight;
+        $scope.master.user = $scope.userId;
 
         var top = $scope.user.weight * 703;
         var bottom = parseInt( $scope.user.heightFt * 12 ) + parseInt( $scope.user.heightIn );

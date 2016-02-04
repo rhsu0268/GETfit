@@ -7,7 +7,8 @@ var GoalSchema = new mongoose.Schema({
     heightIn: String,
     weight: String,
     bmi: Number,
-    fitnessGoal: String
+    fitnessGoal: String,
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 
 
 });
