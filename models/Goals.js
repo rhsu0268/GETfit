@@ -5,8 +5,9 @@ var GoalSchema = new mongoose.Schema({
     age: Number,
     heightFt: String,
     heightIn: String,
-    BMI: Number,
-    FitnessGoal: String
+    weight: String,
+    bmi: Number,
+    fitnessGoal: String
 
 
 });
