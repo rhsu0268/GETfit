@@ -149,7 +149,7 @@ app.controller('MainCtrl', ['$scope', 'auth', 'goals', function($scope, auth, go
     $scope.currentUser = auth.currentUser();
     //$scope.userId = auth.getUserId(userId);
 
-    //console.log($scope.userId);
+    $scope.master = goals.goals[0];
     console.log(goals.goals);
 
     $scope.updateProfile = function(user)
