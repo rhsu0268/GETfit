@@ -35,6 +35,21 @@ router.get('/workouts', function(req, res, next) {
 
 });
 
+router.get('/getGoals', function(req, res, next) {
+
+
+    Goal.find(function(err, goals) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.json(goals);
+
+    });
+
+});
+
 router.get('/goals/:userId', function(req, res, next) {
 
     console.log(req.params.userId);
@@ -62,6 +77,68 @@ router.post('/goals', function(req, res, next) {
         }
 
         res.json(goal);
+
+    });
+
+});
+
+router.post('/updateGoals', function(req, res, next) {
+
+    console.log(req.body.user);
+    console.log(req.body);
+
+    Goal.update({ user: req.body.user},
+        {$set: {name: req.body.name,
+                age: req.body.age,
+                heightFt: req.body.heightFt,
+                heightIn: req.body.heightIn,
+                weight: req.body.weight,
+                bmi: req.body.bmi,
+                fitnessGoal: req.body.fitnessGoal}}
+        , function(err, goals) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        console.log(goals);
+        res.json(goals)
+
+    });
+
+    /*
+    var newGoal = req.body;
+    req.goal.name = newGoal.name;
+    req.goal.age = newGoal.age;
+    req.goal.heightFt = newGoal.heightFt;
+    req.goal.heightIn = newGoal.heightIn;
+    req.goal.weight = newGoal.weight;
+    req.goal.user = newGoal.user;
+    req.goal.bmi = newGoal.bmi;
+    req.goal.fitnessGoal = newGoal.fitnessGoal;
+    req.goal.save(function(err, newGoal) {
+        if (err)
+        {
+            return next(err);
+        }
+        res.json(newGoal);
+
+    });
+    */
+
+});
+
+router.get('/deleteGoals', function(req, res, next) {
+
+    //console.log(req.params.userId);
+
+    Goal.remove({}, function(err, goals) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.send("Goals are successfully deleted!");
 
     });
 

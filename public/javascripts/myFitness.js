@@ -132,7 +132,7 @@ app.factory('goals', ['$http', function($http) {
     goalService.update = function(goal)
     {
         console.log("inside update");
-        return $http.post('/updateGoals/' + goal._id, goal).success(function (data) {
+        return $http.post('/updateGoals', goal).success(function (data) {
             console.log("inside update");
             console.log(data);
 
@@ -149,8 +149,19 @@ app.controller('MainCtrl', ['$scope', 'auth', 'goals', function($scope, auth, go
     $scope.currentUser = auth.currentUser();
     //$scope.userId = auth.getUserId(userId);
 
-    $scope.master = goals.goals[0];
-    console.log(goals.goals);
+    var createNewGoal = false;
+
+    if (goals.goals.length == 0)
+    {
+        console.log("Nothing in goal!");
+        createNewGoal = true;
+    }
+    else
+    {
+        console.log("Goal found!");
+        $scope.master = goals.goals[0];
+    }
+
 
     $scope.updateProfile = function(user)
     {
@@ -161,7 +172,8 @@ app.controller('MainCtrl', ['$scope', 'auth', 'goals', function($scope, auth, go
         $scope.master.heightFt = $scope.user.heightFt;
         $scope.master.heightIn = $scope.user.heightIn;
         $scope.master.weight = $scope.user.weight;
-        $scope.master.user = $scope.userId;
+        $scope.master.user = auth.getUserId();
+        console.log($scope.master.user);
 
         var top = $scope.user.weight * 703;
         var bottom = parseInt( $scope.user.heightFt * 12 ) + parseInt( $scope.user.heightIn );
@@ -171,7 +183,14 @@ app.controller('MainCtrl', ['$scope', 'auth', 'goals', function($scope, auth, go
 
         $scope.master.fitnessGoal = $scope.user.fitnessGoal;
 
-        goals.create($scope.master);
+        if (createNewGoal)
+        {
+            goals.create($scope.master);
+        }
+        else
+        {
+            goals.update($scope.master);
+        }
 
         $scope.user.name = '';
         $scope.user.age = '';
