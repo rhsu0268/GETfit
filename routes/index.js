@@ -144,6 +144,20 @@ router.get('/deleteGoals', function(req, res, next) {
 
 });
 
+router.get('/getWorkouts', function(req, res, next) {
+
+    Workout.find(function(err, workouts) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.json(workouts);
+
+    });
+
+});
+
 
 router.post('/workouts', function(req, res, next) {
 
@@ -203,8 +217,17 @@ router.param('workout', function(req, res, next, id) {
     });
 });
 
-router.get('/workouts/:workout', function(req, res) {
-    res.json(req.workout);
+router.get('/workouts/:userId', function(req, res) {
+
+    Workout.find({user: req.params.userId}, function(err, workouts) {
+        if (err)
+        {
+            return next(err);
+        }
+
+        res.json(workouts);
+
+    });
 
 });
 

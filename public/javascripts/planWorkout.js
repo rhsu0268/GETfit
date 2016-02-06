@@ -12,8 +12,8 @@ app.config([
             controller: 'MainCtrl',
             resolve: {
 
-                postPromise: ['workouts', function(workouts) {
-                    return workouts.getAll();
+                postPromise: ['workouts', 'auth', function(workouts, auth) {
+                    return workouts.getAll(auth.getUserId());
                 }]
             }
 
@@ -112,6 +112,17 @@ app.factory('auth', ['$http', '$window', function($http, $window) {
         }
     };
 
+    auth.getUserId = function()
+    {
+        if (auth.isLoggedIn())
+        {
+            var token = auth.getToken();
+            var payload = JSON.parse($window.atob(token.split('.')[1]));
+
+            return payload._id;
+        }
+    };
+
     auth.register = function(user)
     {
         return $http.post('/register', user).success(function(data) {
@@ -144,8 +155,8 @@ app.factory('workouts', ['$http', function($http) {
         workouts: []
     };
 
-    workoutService.getAll = function() {
-        return $http.get('/workouts').success(function(data)
+    workoutService.getAll = function(userId) {
+        return $http.get('/workouts/' + userId).success(function(data)
         {
             angular.copy(data, workoutService.workouts);
             console.log(data);
@@ -222,9 +233,10 @@ app.factory('completedWorkouts', ['$http', function($http) {
 
 }]);
 
-app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', function($scope, workouts, $stateParams, $window) {
+app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', 'auth', function($scope, workouts, $stateParams, $window, auth) {
 
-    //console.log($stateParams.id);
+    $scope.currentUser = auth.currentUser();
+    console.log($scope.currentUser);
     if ($stateParams.id)
     {
         var workoutId = $stateParams.id;
@@ -233,6 +245,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', fun
         $window.location.href = '/planWorkout';
     }
     $scope.workouts = workouts.workouts;
+    console.log($scope.workouts);
     var newWorkout = {};
     //console.log($scope.workouts);
 
@@ -245,7 +258,8 @@ app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', fun
         newWorkout.exercise1 = $scope.exercise1;
         newWorkout.exercise2 = $scope.exercise2;
         newWorkout.exercise3 = $scope.exercise3;
-
+        newWorkout.user = auth.getUserId();
+        console.log(newWorkout.user);
         console.log(newWorkout);
 
         //$scope.workouts.push(newWorkout);
@@ -275,9 +289,11 @@ app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', fun
 }]);
 
 
-app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', function($scope, workouts, workout)
+app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', 'auth', function($scope, workouts, workout, auth)
 {
-    //console.log(workout);
+    $scope.currentUser = auth.currentUser();
+    console.log($scope.currentUser);
+
     $scope.workout = workout;
     console.log($scope.workout);
 
