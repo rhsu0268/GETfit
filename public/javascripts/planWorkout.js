@@ -156,7 +156,7 @@ app.factory('workouts', ['$http', function($http) {
     };
 
     workoutService.getAll = function(userId) {
-        return $http.get('/workouts/' + userId).success(function(data)
+        return $http.get('/getUserworkouts/' + userId).success(function(data)
         {
             angular.copy(data, workoutService.workouts);
             console.log(data);
@@ -179,7 +179,7 @@ app.factory('workouts', ['$http', function($http) {
     {
         //console.log('inside workoutService.get');
         return $http.get('/workouts/' + id).then(function (res) {
-            //console.log(res);
+            console.log(res.data);
             return res.data;
         });
     };

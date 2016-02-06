@@ -21,19 +21,7 @@ router.get('/planWorkout', function(req, res, next) {
   res.render('planWorkout', { title: 'Express' });
 });
 
-router.get('/workouts', function(req, res, next) {
 
-    Workout.find(function(err, workouts) {
-        if (err)
-        {
-            return next(err);
-        }
-
-        res.json(workouts);
-
-    });
-
-});
 
 router.get('/getGoals', function(req, res, next) {
 
@@ -217,7 +205,11 @@ router.param('workout', function(req, res, next, id) {
     });
 });
 
-router.get('/workouts/:userId', function(req, res) {
+router.get('/workouts/:workout', function(req, res) {
+    res.json(req.workout);
+});
+
+router.get('/getUserWorkouts/:userId', function(req, res) {
 
     Workout.find({user: req.params.userId}, function(err, workouts) {
         if (err)
