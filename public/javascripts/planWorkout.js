@@ -156,7 +156,7 @@ app.factory('workouts', ['$http', function($http) {
     };
 
     workoutService.getAll = function(userId) {
-        return $http.get('/getUserworkouts/' + userId).success(function(data)
+        return $http.get('/getUserWorkouts/' + userId).success(function(data)
         {
             angular.copy(data, workoutService.workouts);
             console.log(data);
@@ -274,12 +274,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', '$stateParams', '$window', 'au
         $scope.exercise1 = '';
         $scope.exercise2 = '';
         $scope.exercise3 = '';
-        $scope.exercise4 = '';
-        $scope.exercise5 = '';
-        $scope.exercise6 = '';
-        $scope.exercise7 = '';
-        $scope.exercise8 = '';
-        $scope.exercise9 = '';
+
 
 
     }
@@ -309,6 +304,15 @@ app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', 'auth', functio
 
         console.log(workout);
         workouts.update(workout);
+
+        $scope.title = '';
+        $scope.workoutSets = '';
+        $scope.workoutReps = '';
+
+        $scope.exercise1 = '';
+        $scope.exercise2 = '';
+        $scope.exercise3 = '';
+
     }
 
 }]);
