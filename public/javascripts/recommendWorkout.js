@@ -14,8 +14,8 @@ app.config([
             controller: 'MainCtrl',
             resolve: {
 
-                workoutPromise: ['workouts', function(workouts) {
-                    return workouts.getAll();
+                workoutPromise: ['workouts', 'auth', function(workouts, auth) {
+                    return workouts.getAll(auth.getUserId());
                 }],
                 postPromise: ['workouts', 'exercises', function(workouts, exercises) {
                     return exercises.getAll();
@@ -39,11 +39,11 @@ app.factory('workouts', ['$http', function($http) {
         workouts: []
     };
 
-    workoutService.getAll = function() {
-        return $http.get('/workouts').success(function(data)
+    workoutService.getAll = function(userId) {
+        return $http.get('/getUserWorkouts/' + userId).success(function(data)
         {
             angular.copy(data, workoutService.workouts);
-            //console.log(typeof(data));
+            console.log(data);
 
         });
 
@@ -83,7 +83,7 @@ app.factory('exercises', ['$http', function($http) {
 
 }]);
 
-app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '$window', function($scope, workouts, exercises, $stateParams, $window) {
+app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '$window', 'auth', function($scope, workouts, exercises, $stateParams, $window, auth) {
 
     $scope.workouts = workouts.workouts;
 
@@ -197,6 +197,8 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         newWorkout.title = "Workout 1";
         newWorkout.workoutSets = sets;
         newWorkout.workoutReps = reps;
+        newWorkout.user = auth.getUserId();
+        console.log(newWorkout.user);
 
         workouts.create(newWorkout);
         console.log("Workout saved!");
