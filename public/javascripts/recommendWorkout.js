@@ -202,7 +202,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         workouts.create(newWorkout);
         console.log("Workout saved!");
-        $scope.successAlert(1);
+        $scope.successAlert();
 
 
 
@@ -231,7 +231,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         workouts.create(newWorkout);
         console.log("Workout saved!");
-        $scope.successAlert(2);
+        $scope.successAlert();
 
 
 
@@ -258,6 +258,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
         console.log(newWorkout.user);
 
         workouts.create(newWorkout);
+        $scope.successAlert();
         console.log("Workout saved!");
 
 

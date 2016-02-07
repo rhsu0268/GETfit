@@ -13,8 +13,8 @@ app.config([
             controller: 'MainCtrl',
             resolve: {
 
-                postPromise: ['completedWorkouts', function(completedWorkouts) {
-                    return completedWorkouts.getAll();
+                postPromise: ['completedWorkouts', 'auth', function(completedWorkouts, auth) {
+                    return completedWorkouts.getAll(auth.getUserId());
                 }]
             }
 
@@ -87,8 +87,8 @@ app.factory('completedWorkouts', ['$http', function($http) {
         completedWorkouts: []
     };
 
-    completedWorkoutsService.getAll = function() {
-        return $http.get('/completedWorkouts').success(function(data)
+    completedWorkoutsService.getAll = function(userId) {
+        return $http.get('/completedWorkouts/' + userId).success(function(data)
         {
             console.log(data);
             angular.copy(data, completedWorkoutsService.completedWorkouts);

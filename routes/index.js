@@ -318,15 +318,15 @@ router.get('/graphTest', function(req, res, next) {
 
 
 
-router.get('/completedWorkouts', function(req, res, next) {
+router.get('/completedWorkouts/:userId', function(req, res, next) {
 
-    WorkoutSummary.find(function(err, completedWorkouts) {
+
+
+    WorkoutSummary.find({user: req.params.userId}, function(err, completedWorkouts) {
         if (err)
         {
             return next(err);
         }
-
-
 
         res.json(completedWorkouts);
 
