@@ -1,4 +1,4 @@
-var app = angular.module('recommendWorkout', ['ui.router']);
+var app = angular.module('recommendWorkout', ['ui.router', 'flash']);
 
 console.log("Inside recommendWorkout.js!");
 
@@ -83,7 +83,7 @@ app.factory('exercises', ['$http', function($http) {
 
 }]);
 
-app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '$window', 'auth', function($scope, workouts, exercises, $stateParams, $window, auth) {
+app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '$window', 'auth', 'Flash', function($scope, workouts, exercises, $stateParams, $window, auth, Flash) {
 
     $scope.workouts = workouts.workouts;
 
@@ -202,6 +202,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         workouts.create(newWorkout);
         console.log("Workout saved!");
+        $scope.successAlert(1);
 
 
 
@@ -230,7 +231,7 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
         workouts.create(newWorkout);
         console.log("Workout saved!");
-
+        $scope.successAlert(2);
 
 
 
@@ -263,6 +264,14 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
 
     }
+    $scope.successAlert = function (value) {
+
+       var message = '<strong>Horray!</strong> You successfully added a workout that Waldo planned!';
+       Flash.create('success', message, 0);
+
+    }
+
+
 
     function getFirstWorkout()
     {
