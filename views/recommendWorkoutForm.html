@@ -66,10 +66,15 @@
                 <div ng-repeat="exercise in workout2">
                     {{exercise}}
                 </div>
+                <div ng-show="secondWorkoutPlanned">
+                    Sets: 3  Reps: 8
+                </div>
                 <br>
                 <div ng-show="secondWorkoutPlanned">
                     These are 3 exercises from your planned workouts.
                 </div>
+                <br>
+                <button ng-show="userLevel" type="submit" class="btn btn-primary" ng-click="saveWorkout2(workout2, 3, 8)">Save Workout 2</button>
             </div>
         </div>
     </div>
@@ -80,10 +85,15 @@
                 <div ng-repeat="exercise in workout3">
                     {{exercise.name}}
                 </div>
+                <div ng-show="secondWorkoutPlanned">
+                    Sets: 3  Reps: 8
+                </div>
                 <br>
                 <div ng-show="thirdWorkoutPlanned">
                     These are 3 random exercises for you to try out.
                 </div>
+                <br>
+                <button ng-show="userLevel" type="submit" class="btn btn-primary" ng-click="saveWorkout3(workout3, 3, 8)">Save Workout 3</button>
             </div>
         </div>
     </div>

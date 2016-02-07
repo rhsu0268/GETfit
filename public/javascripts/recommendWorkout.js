@@ -208,6 +208,62 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
 
     }
 
+    $scope.saveWorkout2 = function(workout2, sets, reps)
+    {
+        console.log("saveWorkout2");
+        console.log(workout2);
+
+        console.log(sets);
+        var newWorkout = {};
+
+        for (var i = 0; i < workout2.length; i++)
+        {
+            var j = i + 1;
+            newWorkout["exercise" + j] = workout2[i];
+        }
+        console.log(newWorkout);
+        newWorkout.title = "Workout 2";
+        newWorkout.workoutSets = sets;
+        newWorkout.workoutReps = reps;
+        newWorkout.user = auth.getUserId();
+        console.log(newWorkout.user);
+
+        workouts.create(newWorkout);
+        console.log("Workout saved!");
+
+
+
+
+    }
+
+    $scope.saveWorkout3 = function(workout3, sets, reps)
+    {
+        console.log("saveWorkout3");
+        console.log(workout3);
+
+        console.log(sets);
+        var newWorkout = {};
+
+        for (var i = 0; i < workout3.length; i++)
+        {
+            var j = i + 1;
+            newWorkout["exercise" + j] = workout3[i];
+        }
+        console.log(newWorkout);
+        newWorkout.title = "Workout 3";
+        newWorkout.workoutSets = sets;
+        newWorkout.workoutReps = reps;
+        newWorkout.user = auth.getUserId();
+        console.log(newWorkout.user);
+
+        workouts.create(newWorkout);
+        console.log("Workout saved!");
+
+
+
+
+    }
+
     function getFirstWorkout()
     {
         var beginnerExercises = [];
@@ -338,12 +394,22 @@ app.controller('MainCtrl', ['$scope', 'workouts', 'exercises', '$stateParams', '
     {
         for (var i = 0; i < userWorkouts.length; i++)
         {
-            plannedExercises.push(userWorkouts[i].exercise1);
-            plannedExercises.push(userWorkouts[i].exercise2);
-            plannedExercises.push(userWorkouts[i].exercise3);
+            if (userWorkouts[i].exercise1)
+            {
+                plannedExercises.push(userWorkouts[i].exercise1);
+            }
+            if (userWorkouts[i].exercise2)
+            {
+                plannedExercises.push(userWorkouts[i].exercise2);
+            }
+            if (userWorkouts[i].exercise3)
+            {
+                plannedExercises.push(userWorkouts[i].exercise3);
+            }
+
         }
 
-        //console.log(plannedExercises);
+        console.log(plannedExercises);
 
         while (!checkIfArrayIsUnique($scope.workout2))
         {
