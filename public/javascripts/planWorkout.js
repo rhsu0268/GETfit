@@ -317,7 +317,7 @@ app.controller('WorkoutsCtrl', ['$scope', 'workouts', 'workout', 'auth', functio
 
 }]);
 
-app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWorkouts', 'Flash', function($scope, workouts, workout, completedWorkouts, Flash)
+app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWorkouts', 'Flash', 'auth', function($scope, workouts, workout, completedWorkouts, Flash, auth)
 {
     //console.log(workout);
     $scope.workout = workout;
@@ -325,6 +325,12 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWork
 
     $scope.addCompletedWorkout = function()
     {
+        if (!$scope.month || !$scope.day || !$scope.year)
+        {
+            $scope.danger();
+            console.log("You must enter all fields!");
+            return;
+        }
         console.log("Adding completed workout!");
         var month = $scope.month;
         console.log(month);
@@ -366,10 +372,27 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWork
             exercise2: exercise2,
             exercise2Summary: [e2s1, e2s2, e2s3],
             exercise3: exercise3,
-            exercise3Summary: [e3s1, e3s2, e3s3]
+            exercise3Summary: [e3s1, e3s2, e3s3],
+            user: auth.getUserId()
         };
 
         completedWorkouts.create(workoutSummary);
+
+        $scope.month = "";
+        $scope.day = "";
+        $scope.year = "";
+
+        $scope.e1s1 = "";
+        $scope.e1s2 = "";
+        $scope.e1s3 = "";
+
+        $scope.e2s1 = "";
+        $scope.e2s2 = "";
+        $scope.e2s3 = "";
+
+        $scope.e3s1 = "";
+        $scope.e3s2 = "";
+        $scope.e3s3 = "";
 
         $scope.successAlert();
 
@@ -386,6 +409,11 @@ app.controller('DoWorkoutCtrl', ['$scope', 'workouts', 'workout', 'completedWork
        // you can inclide html as message (not just text)
        // Third argument (custom-class) is the custom class for the perticular flash alert
     }
+
+    $scope.danger = function () {
+      var message = '<strong>Oh man!</strong> Please make sure you fill in all the fields!';
+      Flash.create('danger', message);
+    };
 
 
 }]);

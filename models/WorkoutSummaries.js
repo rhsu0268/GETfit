@@ -11,7 +11,8 @@ var WorkoutSummarySchema = new mongoose.Schema({
     exercise2: String,
     exercise2Summary: [Number],
     exercise3: String,
-    exercise3Summary: [Number]
+    exercise3Summary: [Number],
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 
     //exercise: { type: mongoose.Schema.Types.ObjectId, ref: 'Exercise'}
 });
