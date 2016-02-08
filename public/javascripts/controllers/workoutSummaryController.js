@@ -24,31 +24,46 @@ angular.module('workoutSummary').controller('MainCtrl', ['$scope', 'completedWor
 
         console.log($scope.selectedWorkout);
 
-        var exercise1 =
-        {
-            x: [1, 2, 3],
-            y: $scope.selectedWorkout.exercise1Summary,
-            name: $scope.selectedWorkout.exercise1,
-            type: 'scatter'
-        };
+        //var data = [exercise1, exercise2, exercise3];
+        var data = [];
 
-        var exercise2 =
+        if ($scope.selectedWorkout.exercise1)
         {
-            x: [1, 2, 3],
-            y: $scope.selectedWorkout.exercise2Summary,
-            name: $scope.selectedWorkout.exercise2,
-            type: 'scatter'
-        };
+            var exercise1 =
+            {
+                x: [1, 2, 3],
+                y: $scope.selectedWorkout.exercise1Summary,
+                name: $scope.selectedWorkout.exercise1,
+                type: 'scatter'
+            };
+            data.push(exercise1);
+        }
 
-        var exercise3 =
+        if ($scope.selectedWorkout.exercise2)
         {
-            x: [1, 2, 3],
-            y: $scope.selectedWorkout.exercise3Summary,
-            name: $scope.selectedWorkout.exercise3,
-            type: 'scatter'
-        };
+            var exercise2 =
+            {
+                x: [1, 2, 3],
+                y: $scope.selectedWorkout.exercise2Summary,
+                name: $scope.selectedWorkout.exercise2,
+                type: 'scatter'
+            };
+            data.push(exercise2);
+        }
 
-        var data = [exercise1, exercise2, exercise3];
+        if ($scope.selectedWorkout.exercise3)
+        {
+            var exercise3 =
+            {
+                x: [1, 2, 3],
+                y: $scope.selectedWorkout.exercise3Summary,
+                name: $scope.selectedWorkout.exercise3,
+                type: 'scatter'
+            };
+            data.push(exercise3);
+        }
+
+
 
 
         var layout =
@@ -108,50 +123,75 @@ angular.module('workoutSummary').controller('MainCtrl', ['$scope', 'completedWor
 
         for (var i = 0; i < uniqueWorkouts.length; i++)
         {
-
-            name1 = uniqueWorkouts[i].exercise1;
-            name2 = uniqueWorkouts[i].exercise2;
-            name3 = uniqueWorkouts[i].exercise3;
+            console.log(uniqueWorkouts[i].exercise1);
+            if (uniqueWorkouts[i].exercise1)
+            {
+                name1 = uniqueWorkouts[i].exercise1;
+                console.log(name1);
+                var averageReps1 = getAverageReps(uniqueWorkouts[i].exercise1Summary);
+                y1.push(averageReps1);
+            }
+            if (uniqueWorkouts[i].exercise2)
+            {
+                name2 = uniqueWorkouts[i].exercise2;
+                var averageReps2 = getAverageReps(uniqueWorkouts[i].exercise2Summary);
+                y2.push(averageReps2);
+            }
+            if (uniqueWorkouts[i].exercise3)
+            {
+                name3 = uniqueWorkouts[i].exercise3;
+                var averageReps3 = getAverageReps(uniqueWorkouts[i].exercise3Summary);
+                y3.push(averageReps3);
+            }
 
             var date = uniqueWorkouts[i].month + " " + uniqueWorkouts[i].day;
 
-            var averageReps1 = getAverageReps(uniqueWorkouts[i].exercise1Summary);
-            var averageReps2 = getAverageReps(uniqueWorkouts[i].exercise2Summary);
-            var averageReps3 = getAverageReps(uniqueWorkouts[i].exercise3Summary);
+
+
 
             x.push(date);
 
-            y1.push(averageReps1);
-            y2.push(averageReps2);
-            y3.push(averageReps3);
+
+
 
         }
-
-        var exercise1 =
+        var data = [];
+        if (name1)
         {
-            x: x,
-            y: y1,
-            name: name1,
-            type: 'scatter'
-        };
+            var exercise1 =
+            {
+                x: x,
+                y: y1,
+                name: name1,
+                type: 'scatter'
+            };
+            data.push(exercise1);
+        }
 
-        var exercise2 =
+        if (name2)
         {
-            x: x,
-            y: y2,
-            name: name2,
-            type: 'scatter'
-        };
-
-        var exercise3 =
+            var exercise2 =
+            {
+                x: x,
+                y: y2,
+                name: name2,
+                type: 'scatter'
+            };
+            data.push(exercise2);
+        }
+        if (name3)
         {
-            x: x,
-            y: y3,
-            name: name3,
-            type: 'scatter'
-        };
+            var exercise3 =
+            {
+                x: x,
+                y: y3,
+                name: name3,
+                type: 'scatter'
+            };
+            data.push(exercise3);
+        }
+        //var data = [exercise1, exercise2, exercise3];
 
-        var data = [exercise1, exercise2, exercise3];
 
 
         var layout =
