@@ -121,6 +121,12 @@ app.controller('MainCtrl', ['$scope', function($scope) {
 
 app.controller('AuthCtrl', ['$scope', '$state', 'auth', function($scope, $state, auth)
 {
+
+    $scope.goHome = function()
+    {
+        $state.go('home');
+    }
+    
     $scope.user = {};
 
     $scope.isLoggedin = auth.isLoggedIn;
