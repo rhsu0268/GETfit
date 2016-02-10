@@ -122,11 +122,6 @@ app.controller('MainCtrl', ['$scope', function($scope) {
 app.controller('AuthCtrl', ['$scope', '$state', 'auth', function($scope, $state, auth)
 {
 
-    $scope.goHome = function()
-    {
-        $state.go('home');
-    }
-    
     $scope.user = {};
 
     $scope.isLoggedin = auth.isLoggedIn;
@@ -156,10 +151,16 @@ app.controller('AuthCtrl', ['$scope', '$state', 'auth', function($scope, $state,
 }]);
 
 
-app.controller('NavCtrl', ['$scope', 'auth', function($scope, auth) {
+app.controller('NavCtrl', ['$scope', 'auth', '$state', function($scope, auth, $state) {
 
     $scope.isLoggedIn = auth.isLoggedIn;
     $scope.currentUser = auth.currentUser;
     $scope.logOut = auth.logOut;
+
+    $scope.goHome = function()
+    {
+        console.log("Going home!");
+        $state.go('home');
+    }
 
 }]);
