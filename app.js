@@ -14,7 +14,7 @@ require('./models/Workouts');
 require('./models/WorkoutSummaries');
 require('./models/Users');
 require('./config/passport');
-mongoose.connect('mongodb://localhost/exercises');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/exercises');
 
 
 
